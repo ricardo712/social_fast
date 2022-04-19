@@ -215,7 +215,7 @@ class _registro_screenState extends State<registro_screen> {
         padding: const EdgeInsets.fromLTRB(20, 15, 20, 15) ,
         minWidth: MediaQuery.of(context).size.width,
         onPressed: () {
-          // singUp(emailEditingController.text, passwordEditingController.text);
+           singUp(emailEditingController.text, passwordEditingController.text);
         },
         child: const Text("Registrarse",
         textAlign: TextAlign.center,
