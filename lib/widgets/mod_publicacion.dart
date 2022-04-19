@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:social_fast/models/pub_model.dart';
 import 'package:social_fast/utils/responsive.dart';
+import 'package:social_fast/views/publica.dart';
 
 class modPublicacion extends StatelessWidget {
   PubModel pubModel = PubModel();
@@ -20,7 +21,7 @@ class modPublicacion extends StatelessWidget {
       //color: Colors.deepPurpleAccent,
       padding: EdgeInsets.all(resposive.dp(2)),
       width: resposive.wp(94.3),
-      height: resposive.hp(60),
+      height: resposive.hp(67),
       decoration: BoxDecoration(
         color: Colors.orangeAccent,
         borderRadius: BorderRadius.all(
@@ -122,6 +123,11 @@ class modPublicacion extends StatelessWidget {
               ],
             ),
           ),
+          Row(mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+          IconButton(onPressed: () {}, icon: const Icon(Icons.favorite, color: Colors.white,), ),
+          IconButton(onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const publicacionPerfil())), icon: const Icon(Icons.comment, color: Colors.white,) ),
+          ],)
         ],
       ),
     );

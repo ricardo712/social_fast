@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:social_fast/models/pub_model.dart';
 import 'package:social_fast/screens/login_screen.dart';
 import 'package:social_fast/models/user_model.dart';
+import 'package:social_fast/widgets/mod_publicacion.dart';
 
 import '../utils/responsive.dart';
 import '../widgets/circle.dart';
@@ -17,6 +19,8 @@ class HomeSreen extends StatefulWidget {
 class _HomeSreenState extends State<HomeSreen> {
   User? user = FirebaseAuth.instance.currentUser;
   UserModel loggedInUser = UserModel();
+  PubModel pubmodel = PubModel();
+  
 
   @override
   void initState() {
@@ -35,6 +39,7 @@ class _HomeSreenState extends State<HomeSreen> {
     Responsive resposive = Responsive(context);
     final double pinkSize = resposive.wp(90);
     final double orangeSize = resposive.wp(55);
+    objeto(pubmodel);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Inicio'),
@@ -105,11 +110,25 @@ class _HomeSreenState extends State<HomeSreen> {
                   },
                 ),
               ),
+              ListView(
+                padding: EdgeInsets.all(resposive.dp(1.4)),
+                children: [
+                modPublicacion(pubModel: pubmodel)
+              ],),
             ],
           ),
         ),
       ),
     );
+  }
+  void objeto(PubModel pubModel) {
+    pubModel.id = '1';
+    pubModel.uid = '1058';
+    pubModel.uName = 'Jhon Ruiz';
+    pubModel.mensaje = 'Un buen paisaje.';
+    pubModel.fecha = '07/04/2022';
+    pubModel.hora = '16:36';
+    pubModel.imagen = 'vacio';
   }
   Future<void> salir(BuildContext context) async {
     await FirebaseAuth.instance.signOut();

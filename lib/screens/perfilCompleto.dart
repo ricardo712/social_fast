@@ -311,14 +311,13 @@ class _perfilCompletoState extends State<perfilCompleto> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         IconButton(
+          icon: const Icon(Icons.arrow_back),
           splashRadius: 20,
           onPressed: () {
             //Navigator.of(context).pop();
             Fluttertoast.showToast(msg: "Atras");
           }, //=> Navigator.pushAndRemoveUntil(
-          // 'context', routeSlide(page: ejemplo1()), (_) => false),
-
-          icon: const Icon(Icons.arrow_back),
+          // 'context', routeSlide(page: ejemplo1()), (_) => false)
         ),
         TextButton(
           style: TextButton.styleFrom(
@@ -338,7 +337,6 @@ class _perfilCompletoState extends State<perfilCompleto> {
           ),
         ),
 
-        //TextButton(onPressed: () {}, child: const Text('Hola'))
       ],
     );
   }

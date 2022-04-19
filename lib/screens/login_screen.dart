@@ -141,6 +141,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   top: pinkSize * 0.25,
                   child: Column(
                     children: <Widget>[
+                      // const Text("SOCIAL FAST", style: TextStyle(color: Colors.black, fontSize: 30)),
                       SizedBox(
                         height: responsive.hp(5),
                       ),

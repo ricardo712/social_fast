@@ -50,7 +50,7 @@ class _formPublicacionState extends State<formPublicacion> {
     );
 
     return Positioned(
-      top: responsive.hp(58),
+      top: responsive.hp(70),
       left: responsive.wp(2),
       right: responsive.wp(2),
       child: Column(

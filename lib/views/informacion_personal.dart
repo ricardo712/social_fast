@@ -15,10 +15,10 @@ class informacionPersonal extends StatelessWidget {
     final String numAmigos = "1";
 
     return Positioned(
-      top: responsive.hp(45.5),
+      top: responsive.hp(53),
       child: Container(
         width: responsive.wp(88),
-        height: responsive.hp(12),
+        height: responsive.hp(15),
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(
             Radius.circular(10),
