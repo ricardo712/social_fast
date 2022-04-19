@@ -24,17 +24,17 @@ class IconContainer extends StatelessWidget {
           ),
         ],
       ),
-      // padding: EdgeInsets.all(this.size * 0.15),
-      // child: Center(
-      //     child: CircleAvatar(
-      //   child: SvgPicture.asset(
-      //     '',
-      //     width: double.infinity,
-      //     height: double.infinity,
-      //   ),
-      //   radius: 100,
-      //   backgroundColor: Colors.white60,
-      // )),
+      padding: EdgeInsets.all(this.size * 0.15),
+      child: Center(
+          child: CircleAvatar(
+        child: SvgPicture.asset(
+          'assets/svg/mobile-new-posts.svg',
+          width: double.infinity,
+          height: double.infinity,
+        ),
+        radius: 100,
+        backgroundColor: Colors.white60,
+      )),
     );
   }
 }
