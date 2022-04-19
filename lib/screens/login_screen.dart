@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:social_fast/screens/home_screen.dart';
+import 'package:social_fast/screens/raiz.dart';
 import 'package:social_fast/screens/registro_screen.dart';
 import 'package:social_fast/screens/reset_screen.dart';
 
@@ -10,14 +11,13 @@ import '../widgets/circle.dart';
 import '../widgets/icon_container.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({ Key? key }) : super(key: key);
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
@@ -30,6 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final double orangeSize = responsive.wp(55);
     const double ancho = 70;
     const double alto = 5.5;
+
     final emailField = TextFormField(
       autofocus: false,
       controller: emailController,
@@ -56,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
-  final passwordField = TextFormField(
+    final passwordField = TextFormField(
       autofocus: false,
       controller: passwordController,
       obscureText: true,
@@ -75,7 +76,8 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       textInputAction: TextInputAction.done,
       decoration: InputDecoration(
-        prefixIcon: const Icon(Icons.lock_clock_outlined, color: Colors.pinkAccent),
+        prefixIcon:
+            const Icon(Icons.lock_clock_outlined, color: Colors.pinkAccent),
         contentPadding: const EdgeInsets.fromLTRB(20, 10, 20, 15),
         hintText: "Password",
         border: OutlineInputBorder(
@@ -91,7 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
         onPressed: () {
-           sigIn(emailController.text, passwordController.text);
+          sigIn(emailController.text, passwordController.text);
         },
         child: const Text(
           "Log In",
@@ -101,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
-   return Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -185,7 +187,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const registro_screen()));
+                                      builder: (context) =>
+                                          const registro_screen()));
                             },
                             child: Text(
                               'aquí',
@@ -221,12 +224,13 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+
   sigIn(String email, String password) async {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
       Fluttertoast.showToast(msg: "Inicio Exitoso");
       Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (context) => const HomeSreen()));
+          .pushReplacement(MaterialPageRoute(builder: (context) => raiz()));
     } on FirebaseAuthException {
       Fluttertoast.showToast(
           msg: "Usuario o contraseña incorrectos", gravity: ToastGravity.TOP);
