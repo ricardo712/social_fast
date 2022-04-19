@@ -35,7 +35,7 @@ class modPublicacion extends StatelessWidget {
           Row(
             children: [
               CircleAvatar(
-                radius: resposive.dp(4.5),
+                radius: resposive.dp(4),
                 backgroundImage: AssetImage('assets/images/a.jpg'),
               ),
               SizedBox(
@@ -102,7 +102,7 @@ class modPublicacion extends StatelessWidget {
               children: [
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.fromLTRB(1, 1, 1, 1),
+                    padding: const EdgeInsets.fromLTRB(1, 1, 1, 1),
                     child: Container(
                       //height: resposive.hp(48),
                       //width: resposive.wp(84.6),
