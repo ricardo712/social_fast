@@ -1,4 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:social_fast/screens/home_screen.dart';
+
+import '../models/user_model.dart';
 class registro_screen extends StatefulWidget {
   const registro_screen({ Key? key }) : super(key: key);
 
@@ -7,7 +13,7 @@ class registro_screen extends StatefulWidget {
 }
 
 class _registro_screenState extends State<registro_screen> {
-  
+  final _auth = FirebaseAuth.instance;
   final _formKey = GlobalKey<FormState>();
 
   final nameEditingController = TextEditingController();
@@ -291,5 +297,45 @@ class _registro_screenState extends State<registro_screen> {
         )
       ),
     );
+  }
+  void singUp(String email, String password ) async {
+    if(_formKey.currentState!.validate()){
+    try {
+      await _auth
+      .createUserWithEmailAndPassword(email: email, password: password)
+      .then((value) => {
+        postDetailsToFirestore()
+      });
+    }on FirebaseAuthException {
+          Fluttertoast.showToast(msg: "el correo pertenece a otra cuenta");
+    }
+    }
+    }
+  
+  postDetailsToFirestore()  async {
+ // llamar nuestra BD
+ //llamar el modelo del usuario
+ //enviar los datos
+  FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+  User? user = _auth.currentUser;
+
+  UserModel userModel = UserModel();
+
+  //escribir todos los valores
+
+  userModel.email = user!.email;
+  userModel.uid = user.uid;
+  userModel.name = nameEditingController.text;
+  userModel.lastname = lastNameEditingController.text;
+  userModel.tel = telEditingController.text;
+
+   await firebaseFirestore
+   .collection("usuarios")
+   .doc(user.uid)
+   .set(userModel.toMap());
+   Fluttertoast.showToast(msg: "Cuenta creada");
+
+   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) =>  const HomeSreen()), (route) => false);
+
   }
 }

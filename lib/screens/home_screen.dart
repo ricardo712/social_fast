@@ -1,4 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:social_fast/screens/login_screen.dart';
+import 'package:social_fast/models/user_model.dart';
 
 import '../utils/responsive.dart';
 import '../widgets/circle.dart';
@@ -11,6 +15,21 @@ class HomeSreen extends StatefulWidget {
 }
 
 class _HomeSreenState extends State<HomeSreen> {
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUser = UserModel();
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseFirestore.instance
+        .collection("usuarios")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      this.loggedInUser = UserModel.fromMap(value.data());
+      setState(() {});
+    });
+  }
   @override
   Widget build(BuildContext context) {
     Responsive resposive = Responsive(context);
@@ -61,28 +80,28 @@ class _HomeSreenState extends State<HomeSreen> {
                       fontSize: resposive.dp(4), fontWeight: FontWeight.bold),
                 ),
               ),
-              // Positioned(
-              //   top: resposive.hp(36),
-              //   child: Text(
-              //     "${loggedInUser.name} ${loggedInUser.lastname}",
-              //     style: const TextStyle(
-              //         color: Colors.black, fontWeight: FontWeight.w500),
-              //   ),
-              // ),
-              // Positioned(
-              //   top: resposive.hp(38.3),
-              //   child: Text(
-              //     "${loggedInUser.email}",
-              //     style: const TextStyle(
-              //         color: Colors.black, fontWeight: FontWeight.w500),
-              //   ),
-              // ),
+               Positioned(
+                 top: resposive.hp(36),
+                 child: Text(
+                   "${loggedInUser.name} ${loggedInUser.lastname}",
+                   style: const TextStyle(
+                       color: Colors.black, fontWeight: FontWeight.w500),
+                 ),
+               ),
+               Positioned(
+                 top: resposive.hp(38.3),
+                 child: Text(
+                   "${loggedInUser.email}",
+                   style: const TextStyle(
+                       color: Colors.black, fontWeight: FontWeight.w500),
+                 ),
+               ),
               Positioned(
                 top: resposive.hp(41),
                 child: ActionChip(
                   label: const Text('Salir'),
                   onPressed: () {
-                    // salir(context);
+                     salir(context);
                   },
                 ),
               ),
@@ -91,5 +110,10 @@ class _HomeSreenState extends State<HomeSreen> {
         ),
       ),
     );
+  }
+  Future<void> salir(BuildContext context) async {
+    await FirebaseAuth.instance.signOut();
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const LoginScreen()));
   }
 }
