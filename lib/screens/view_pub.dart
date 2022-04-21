@@ -3,7 +3,6 @@ import 'package:social_fast/models/pub_model.dart';
 import 'package:social_fast/utils/responsive.dart';
 import 'package:social_fast/widgets/circle.dart';
 import 'package:social_fast/widgets/mod_publicacion.dart';
-import 'package:social_fast/widgets/icon_container.dart';
 
 class viewPub extends StatefulWidget {
   const viewPub({Key? key}) : super(key: key);
@@ -13,35 +12,13 @@ class viewPub extends StatefulWidget {
 }
 
 class _viewPubState extends State<viewPub> {
-  //File? imagen = null;
-  //final picker = ImagePicker();
-/*
-  Future selimagen(op) async {
-    var pickedFile;
-
-    if (op == 1) {
-      pickedFile = await picker.pickImage(source: ImageSource.gallery);
-    } else {
-      print('Abriendo foto');
-      pickedFile = await picker.pickImage(source: ImageSource.camera);
-    }
-
-    setState(() {
-      if (pickedFile != null) {
-        imagen = File(pickedFile.path);
-      } else {
-        print("No hay imagen selecionada");
-      }
-    });
-    Navigator.of(context).pop();
-  }*/
   PubModel pubModel = PubModel();
 
   @override
   Widget build(BuildContext context) {
-    Responsive resposive = Responsive(context);
-    final double pinkSize = resposive.wp(90);
-    final double orangeSize = resposive.wp(55);
+    Responsive responsive = Responsive(context);
+    final double pinkSize = responsive.wp(90);
+    final double orangeSize = responsive.wp(55);
     objeto(pubModel);
 
     return Scaffold(
@@ -52,7 +29,7 @@ class _viewPubState extends State<viewPub> {
       body: SingleChildScrollView(
         child: Container(
           width: double.infinity,
-          height: resposive.height * 0.82,
+          height: responsive.height * 0.82,
           color: Colors.white,
           child: Stack(
             //alignment: Alignment.center,
@@ -83,13 +60,13 @@ class _viewPubState extends State<viewPub> {
               ),
 
               ListView(
-                padding: EdgeInsets.all(resposive.dp(1.5)),
+                padding: EdgeInsets.all(responsive.dp(1.5)),
                 children: <Widget>[
                   modPublicacion(
                     pubModel: pubModel,
                   ),
                   SizedBox(
-                    height: resposive.hp(1),
+                    height: responsive.hp(1),
                   ),
                   modPublicacion(
                     pubModel: pubModel,
