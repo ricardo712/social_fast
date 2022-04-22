@@ -20,7 +20,7 @@ class raiz extends StatefulWidget {
 
 class _raizState extends State<raiz> {
   int _page = 0;
-
+  //moverse entre las páginas.
   final perfilCompleto _perfil = const perfilCompleto();
   final publicacionPerfil _pubPerfil = const publicacionPerfil();
   final Perfil _perfilBotton = const Perfil();
