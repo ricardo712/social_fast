@@ -5,10 +5,9 @@ import 'package:social_fast/screens/home_screen.dart';
 import 'package:social_fast/screens/raiz.dart';
 import 'package:social_fast/screens/registro_screen.dart';
 import 'package:social_fast/screens/reset_screen.dart';
-
-import '../utils/responsive.dart';
-import '../widgets/circle.dart';
-import '../widgets/icon_container.dart';
+import 'package:social_fast/utils/responsive.dart';
+import 'package:social_fast/widgets/circle.dart';
+import 'package:social_fast/widgets/icon_container.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

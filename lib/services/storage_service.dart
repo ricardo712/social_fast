@@ -12,9 +12,8 @@ class Storage {
     String fileName,
   ) async {
     File file = File(filePath);
-
     try {
-      await storage.ref('imagenes/$fileName').putFile(file);
+      await storage.ref('images/$fileName').putFile(file);
     } on firebase_core.FirebaseException catch (e) {
       print(e);
     }

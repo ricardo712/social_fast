@@ -1,21 +1,18 @@
-//import 'dart:typed_data';
-//import 'dart:ui';
+import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:social_fast/models/user_model.dart';
 import 'package:social_fast/services/storage_service.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-//import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:photo_manager/photo_manager.dart';
-//import 'package:prueba_interfaz/helpers/animation_route.dart';
 import 'package:social_fast/ui/widgets.dart';
-//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:social_fast/utils/responsive.dart';
-//import 'package:prueba_interfaz/widgets/circle.dart';
-
-//FirebaseAuth _auth = FirebaseAuth.instance;
+import 'package:image_picker/image_picker.dart';
 
 class publicacionPerfil extends StatefulWidget {
   const publicacionPerfil({Key? key}) : super(key: key);
@@ -25,16 +22,57 @@ class publicacionPerfil extends StatefulWidget {
 }
 
 class _publicacionPerfilState extends State<publicacionPerfil> {
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUser = UserModel();
   final String title = 'Publicación';
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  //final TextEditingController _comentarioController = TextEditingController();
+  final Storage storage = Storage();
   late final bool _success = false;
   late String userMail;
-  //const ejemplo1({Key? key}) : super(key: key);
 
   final _keyForm = GlobalKey<FormState>();
   late List<AssetEntity> _mediaList = [];
   int privacidad = 1;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseFirestore.instance
+        .collection("usuarios")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      this.loggedInUser = UserModel.fromMap(value.data());
+      setState(() {});
+    });
+  }
+
+  Future agrImagen() async {
+    //final Storage storage = Storage();
+    final results = await FilePicker.platform.pickFiles(
+      allowMultiple: false,
+      type: FileType.custom,
+      allowedExtensions: ['png', 'jpg'],
+    );
+    if (results == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("No hay archivos seleccionados."),
+        ),
+      );
+      return null;
+    }
+    final path = results.files.single.path!;
+    final fileName = results.files.single.name;
+    setState(() {
+      //sampleImage = results;
+    });
+    print(path);
+    print(fileName);
+    storage
+        .uploadFile(path, fileName)
+        .then((value) => print('Imagen cargada.'));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +80,8 @@ class _publicacionPerfilState extends State<publicacionPerfil> {
     final double pinkSize = responsive.wp(90);
     final double orangeSize = responsive.wp(55);
     final size = MediaQuery.of(context).size;
-    Storage storage = Storage();
+    File _selecImage;
+
     //int _count = 0;
     //String srcImage;
 
@@ -73,7 +112,7 @@ class _publicacionPerfilState extends State<publicacionPerfil> {
                   flex: 2,
                   child: SizedBox(
                     child: ListView(
-                      children: [
+                      children: <Widget>[
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
@@ -119,7 +158,13 @@ class _publicacionPerfilState extends State<publicacionPerfil> {
                         SizedBox(
                           height: responsive.hp(1.1),
                         ),
-                        Padding(
+                        // if (_selecImage != null)
+                        //   SizedBox(
+                        //     height: 100,
+                        //     child: Image.file(_selecImage),
+                        //   ),
+                        /*Padding(
+                          //? reemplazar por la imagen de galeria
                           padding:
                               const EdgeInsets.only(left: 65.0, right: 10.0),
                           child: Container(
@@ -136,7 +181,7 @@ class _publicacionPerfilState extends State<publicacionPerfil> {
                                   ),
                             ),
                           ), //Text('Linea 140 a 186'),
-                        ),
+                        ),*/
                       ],
                     ),
                   ),
@@ -152,6 +197,7 @@ class _publicacionPerfilState extends State<publicacionPerfil> {
                     scrollDirection: Axis.horizontal,
                     children: [
                       Row(
+                        //mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Container(
                             //color: Colors.black,
@@ -213,9 +259,9 @@ class _publicacionPerfilState extends State<publicacionPerfil> {
                             const Text.rich(
                                 TextSpan(text: 'Todos pueden comentar')),
                           if (privacidad == 2)
-                            const Text.rich(TextSpan(text: 'Solo seguidores')),
+                            const Text.rich(TextSpan(text: 'Solo amigos')),
                           if (privacidad == 3)
-                            const Text.rich(TextSpan(text: 'Nadie')),
+                            const Text.rich(TextSpan(text: 'Solo yo')),
                           const SizedBox(),
                         ],
                       ),
@@ -236,30 +282,10 @@ class _publicacionPerfilState extends State<publicacionPerfil> {
                             const Text.rich(TextSpan(
                                 text: 'Permiso para acceder a galeria'));
                             Fluttertoast.showToast(msg: "Abriendo galeria");
-                            final results = await FilePicker.platform.pickFiles(
-                              allowMultiple: false,
-                              type: FileType.custom,
-                              allowedExtensions: ['png', 'jpg'],
-                            );
-                            if (results == null) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content:
-                                      Text("No hay archivos seleccionados."),
-                                ),
-                              );
-                              return null;
-                            }
-                            final path = results.files.single.path!;
-                            final fileName = results.files.single.name;
-                            print(path);
-                            print(fileName);
-                            storage
-                                .uploadFile(path, fileName)
-                                .then((value) => print('Imagen cargada.'));
+                            //? agregar imagen
+                            agrImagen();
                           },
-                          icon: const Icon(Icons
-                              .camera)), //SvgPicture.asset('assets/svg/gallery.svg')
+                          icon: const Icon(Icons.camera)),
                       IconButton(
                           splashRadius: 20,
                           onPressed: () async {

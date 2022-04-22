@@ -4,6 +4,7 @@ import 'package:social_fast/screens/buscar.dart';
 import 'package:social_fast/screens/home_screen.dart';
 import 'package:social_fast/screens/infoPersonal.dart';
 import 'package:social_fast/screens/perfilCompleto.dart';
+import 'package:social_fast/screens/notificaciones.dart';
 import 'package:social_fast/screens/view_pub.dart';
 import 'package:social_fast/utils/responsive.dart';
 import 'package:social_fast/views/perfil.dart';
@@ -23,8 +24,7 @@ class _raizState extends State<raiz> {
   final publicacionPerfil _pubPerfil = const publicacionPerfil();
   final Perfil _perfilBotton = const Perfil();
   final HomeSreen _homeScreen = const HomeSreen();
-  final infopersonal _infopersonal =  infopersonal();
-
+  final Notificaciones _notificaciones = Notificaciones();
   final viewPub _viewpub = const viewPub();
   final buscarUser _buscarUser = new buscarUser();
 
@@ -35,7 +35,7 @@ class _raizState extends State<raiz> {
          return _homeScreen;
         
       case 1:
-        return _buscarUser;
+        return _notificaciones;
 
       case 2:
         return _viewpub;
