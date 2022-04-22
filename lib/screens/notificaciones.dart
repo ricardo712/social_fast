@@ -8,6 +8,7 @@ import 'package:social_fast/models/user_model.dart';
 import 'package:social_fast/ui/widgets.dart';
 import 'package:social_fast/utils/responsive.dart';
 import 'package:social_fast/widgets/circle.dart';
+import 'package:social_fast/widgets/mod_notificaccion.dart';
 import 'package:social_fast/widgets/mod_publicacion.dart';
 
 class Notificaciones extends StatefulWidget {
@@ -41,7 +42,13 @@ class _NotificacionesState extends State<Notificaciones> {
     final double pinkSize = responsive.wp(90);
     final double orangeSize = responsive.wp(55);
     final size = MediaQuery.of(context).size;
+    final mensajeNotificacion =
+        "Tienes una nueva sugerencia\nde amistad de ${pubModel.uName}";
+    final fecha = pubModel.fecha;
+    final menPub = pubModel.mensaje;
     objeto(pubModel);
+    String sugerencia = "Tienes una nueva sugerencia\n de amistad";
+    String like = "Le gusta tu foto a ";
 
     return Scaffold(
       appBar: AppBar(
@@ -91,7 +98,82 @@ class _NotificacionesState extends State<Notificaciones> {
               ),
               ListView(
                 padding: EdgeInsets.all(responsive.dp(1.5)),
-                children: <Widget>[],
+                children: <Widget>[
+                  Container(
+                    //color: Colors.deepPurpleAccent,
+                    padding: EdgeInsets.all(responsive.dp(2)),
+                    width: responsive.wp(94.3),
+                    //height: responsive.hp(85),
+                    decoration: BoxDecoration(
+                      color: Colors.white54,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(
+                          responsive.dp(7),
+                        ),
+                      ),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          "Notificaciones.",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: responsive.dp(3),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              "Nuevas.",
+                              //textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: responsive.dp(2),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: responsive.hp(1),
+                        ),
+                        modNotificacion(mensaje: sugerencia, name: "Jhon Ruiz"),
+                        SizedBox(
+                          height: responsive.hp(1),
+                        ),
+                        modNotificacion(
+                          mensaje: sugerencia,
+                          name: "Mateo Avila",
+                        ),
+                        SizedBox(
+                          height: responsive.hp(1),
+                        ),
+                        modNotificacion(mensaje: sugerencia, name: "Carmen St"),
+                        SizedBox(height: responsive.hp(1)),
+                        Row(
+                          children: [
+                            Text(
+                              "Anteriores.",
+                              //textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: responsive.dp(2),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: responsive.hp(1)),
+                        modNotificacion(mensaje: like, name: "Carmen St"),
+                        SizedBox(height: responsive.hp(1)),
+                        modNotificacion(mensaje: like, name: "Anastasia "),
+                        SizedBox(height: responsive.hp(1)),
+                        modNotificacion(mensaje: like, name: "Anastasia "),
+                        SizedBox(height: responsive.hp(1)),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
