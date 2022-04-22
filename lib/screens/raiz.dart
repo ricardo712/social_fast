@@ -16,7 +16,6 @@ class raiz extends StatefulWidget {
   @override
   State<raiz> createState() => _raizState();
 }
-//Comentario Jhon Ruiz
 
 class _raizState extends State<raiz> {
   int _page = 0;
