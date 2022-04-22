@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:social_fast/screens/buscar.dart';
 import 'package:social_fast/screens/home_screen.dart';
+import 'package:social_fast/screens/infoPersonal.dart';
 import 'package:social_fast/screens/perfilCompleto.dart';
 import 'package:social_fast/screens/view_pub.dart';
 import 'package:social_fast/utils/responsive.dart';
@@ -20,8 +21,9 @@ class _raizState extends State<raiz> {
 
   final perfilCompleto _perfil = const perfilCompleto();
   final publicacionPerfil _pubPerfil = const publicacionPerfil();
-  final Perfil _perfilBotton = new Perfil();
+  final Perfil _perfilBotton = const Perfil();
   final HomeSreen _homeScreen = const HomeSreen();
+  final infopersonal _infopersonal =  infopersonal();
 
   final viewPub _viewpub = const viewPub();
   final buscarUser _buscarUser = new buscarUser();
@@ -30,8 +32,8 @@ class _raizState extends State<raiz> {
   Widget _pageChoser(int page) {
     switch (page) {
       case 0:
-        return _homeScreen;
-
+         return _homeScreen;
+        
       case 1:
         return _buscarUser;
 
