@@ -16,6 +16,7 @@ class raiz extends StatefulWidget {
   @override
   State<raiz> createState() => _raizState();
 }
+//Comentario Jhon Ruiz
 
 class _raizState extends State<raiz> {
   int _page = 0;
@@ -32,8 +33,8 @@ class _raizState extends State<raiz> {
   Widget _pageChoser(int page) {
     switch (page) {
       case 0:
-         return _homeScreen;
-        
+        return _homeScreen;
+
       case 1:
         return _notificaciones;
 
