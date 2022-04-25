@@ -11,6 +11,8 @@ import 'package:social_fast/views/informacion_personal.dart';
 import 'package:social_fast/widgets/circle.dart';
 import 'package:social_fast/widgets/icon_container.dart';
 
+import 'infoPersonal.dart';
+
 class perfilCompleto extends StatefulWidget {
   const perfilCompleto({Key? key}) : super(key: key);
 
@@ -250,6 +252,35 @@ class _perfilCompletoState extends State<perfilCompleto> {
                         Expanded(
                           child: Text(
                             "Amigos.",
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                        Icon(
+                          Icons.account_box_outlined,
+                          color: Colors.pink,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    infopersonal();
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(width: 1, color: Colors.grey),
+                      ),
+                    ),
+                    child: Row(
+                      children: const [
+                        Expanded(
+                          child: Text(
+                            "Información personal ",
                             style: TextStyle(
                               fontSize: 16,
                             ),
