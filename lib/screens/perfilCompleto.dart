@@ -267,7 +267,8 @@ class _perfilCompletoState extends State<perfilCompleto> {
                 ),
                 InkWell(
                   onTap: () {
-                    infopersonal();
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => infopersonal()));
                   },
                   child: Container(
                     padding: const EdgeInsets.all(4),
@@ -287,7 +288,7 @@ class _perfilCompletoState extends State<perfilCompleto> {
                           ),
                         ),
                         Icon(
-                          Icons.account_box_outlined,
+                          Icons.edit_note_sharp,
                           color: Colors.pink,
                         ),
                       ],
