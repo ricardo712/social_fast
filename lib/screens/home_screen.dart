@@ -42,7 +42,10 @@ class _HomeSreenState extends State<HomeSreen> {
     objeto(pubmodel);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Inicio'),
+        title: Text(
+          'Social App',
+          style: TextStyle(fontSize: resposive.dp(3)),
+        ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(

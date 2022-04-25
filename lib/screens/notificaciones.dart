@@ -193,33 +193,15 @@ class _NotificacionesState extends State<Notificaciones> {
   }
 
   Widget _appBarPost(BuildContext context) {
+    Responsive responsive = Responsive(context);
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        IconButton(
-            splashRadius: 20,
-            onPressed: () {
-              Navigator.of(context).pop();
-            }, //=> Navigator.pushAndRemoveUntil(
-            // 'context', routeSlide(page: ejemplo1()), (_) => false),
-
-            icon: const Icon(Icons.arrow_back)),
-        TextButton(
-          style: TextButton.styleFrom(
-              padding: const EdgeInsets.only(left: 12.0, right: 12.0),
-              backgroundColor: Colors.orange,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50.0))),
-          onPressed: () {},
-          child: const TextFrave(
-            text: 'Publicar',
-            color: Colors.white,
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-            letterSpacing: 5,
-          ),
+        Text(
+          "Notificaciones",
+          style: TextStyle(
+              fontSize: responsive.dp(3), fontWeight: FontWeight.w600),
         ),
-        //TextButton(onPressed: () {}, child: const Text('Hola'))
       ],
     );
   }
