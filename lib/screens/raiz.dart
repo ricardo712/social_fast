@@ -35,13 +35,13 @@ class _raizState extends State<raiz> {
         return _homeScreen;
 
       case 1:
-        return _notificaciones;
+        return _buscarUser;
 
       case 2:
         return _viewpub;
 
       case 3:
-        return _pubPerfil;
+        return _notificaciones;
 
       case 4:
         return _perfil;
@@ -76,7 +76,7 @@ class _raizState extends State<raiz> {
         color: Colors.white,
       ),
       const Icon(
-        Icons.settings,
+        Icons.notifications,
         size: 30,
         color: Colors.white,
       ),

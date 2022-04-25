@@ -336,7 +336,6 @@ class _perfilCompletoState extends State<perfilCompleto> {
             letterSpacing: 2,
           ),
         ),
-
       ],
     );
   }

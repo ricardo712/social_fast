@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:social_fast/utils/responsive.dart';
+import 'package:social_fast/widgets/busUser.dart';
 import 'package:social_fast/widgets/circle.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -172,7 +173,8 @@ class buscarUser extends StatelessWidget {
                     padding: EdgeInsets.symmetric(vertical: responsive.dp(1)),
                     child: Column(
                       children: [
-                        userResult,
+                        //userResult,
+                        busUser(nameUser: "Ricardo Andres Carvajal Arenas")
                       ],
                     ),
                   ),
