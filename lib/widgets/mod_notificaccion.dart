@@ -45,22 +45,16 @@ class modNotificacion extends StatelessWidget {
           SizedBox(
             width: responsive.wp(2),
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Text(
-                    mensajeNotificacion,
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                      fontSize: responsive.dp(2),
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                ],
+          SizedBox(
+            width: responsive.wp(60),
+            child: Text(
+              mensajeNotificacion,
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                fontSize: responsive.dp(2),
+                fontWeight: FontWeight.normal,
               ),
-            ],
+            ),
           ),
         ],
       ),

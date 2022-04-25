@@ -47,7 +47,7 @@ class _NotificacionesState extends State<Notificaciones> {
     final fecha = pubModel.fecha;
     final menPub = pubModel.mensaje;
     objeto(pubModel);
-    String sugerencia = "Tienes una nueva sugerencia\n de amistad";
+    String sugerencia = "Tienes una nueva sugerencia de amistad";
     String like = "Le gusta tu foto a ";
 
     return Scaffold(
