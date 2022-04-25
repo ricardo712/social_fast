@@ -23,7 +23,10 @@ class _viewPubState extends State<viewPub> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Publicaciones'),
+        title: Text(
+          'Publicaciones',
+          style: TextStyle(fontSize: responsive.dp(3)),
+        ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(

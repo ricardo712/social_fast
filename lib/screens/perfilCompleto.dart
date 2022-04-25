@@ -51,6 +51,7 @@ class _perfilCompletoState extends State<perfilCompleto> {
           Column(
             children: [
               SizedBox(
+                height: responsive.hp(6.8),
                 width: responsive.wp(100),
                 child: _appBarPost(context),
               ),
@@ -339,35 +340,15 @@ class _perfilCompletoState extends State<perfilCompleto> {
   }
 
   Widget _appBarPost(BuildContext context) {
+    Responsive responsive = Responsive(context);
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        IconButton(
-          icon: const Icon(Icons.arrow_back),
-          splashRadius: 20,
-          onPressed: () {
-            //Navigator.of(context).pop();
-            Fluttertoast.showToast(msg: "Atras");
-          }, //=> Navigator.pushAndRemoveUntil(
-          // 'context', routeSlide(page: ejemplo1()), (_) => false)
-        ),
-        TextButton(
-          style: TextButton.styleFrom(
-              padding: const EdgeInsets.only(left: 12.0, right: 12.0),
-              backgroundColor: Colors.orange,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50.0))),
-          onPressed: () {
-            Fluttertoast.showToast(msg: "Buscar");
-          },
-          child: const TextFrave(
-            text: 'Buscar',
-            color: Colors.white,
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            letterSpacing: 2,
-          ),
-        ),
+        Text(
+          "Mi perfil",
+          style: TextStyle(
+              fontSize: responsive.dp(3), fontWeight: FontWeight.w600),
+        )
       ],
     );
   }

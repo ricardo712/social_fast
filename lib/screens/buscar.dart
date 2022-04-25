@@ -50,7 +50,10 @@ class buscarUser extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Buscar'),
+        title: Text(
+          'Buscar',
+          style: TextStyle(fontSize: responsive.dp(3)),
+        ),
         centerTitle: true,
       ),
       body: SizedBox(
