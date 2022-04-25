@@ -28,7 +28,6 @@ class _infopersonalState extends State<infopersonal> {
     final editarinfpersonal = TextFormField(
       autofocus: false,
       controller: editarinfopersonalController,
-      obscureText: true,
       validator: (value) {
         RegExp regex = RegExp(r'^.{6,}$');
         if (value!.isEmpty) {

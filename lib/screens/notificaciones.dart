@@ -51,23 +51,23 @@ class _NotificacionesState extends State<Notificaciones> {
     String like = "Le gusta tu foto a ";
 
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          Column(
-            children: [
-              SizedBox(
-                height: responsive.hp(6.8),
-                width: responsive.wp(100),
-                child: _appBarPost(context),
-              ),
-            ],
-          ),
-        ],
-      ),
+      // appBar: AppBar(
+      //   actions: [
+      //     Column(
+      //       children: [
+      //         SizedBox(
+      //           height: responsive.hp(6.8),
+      //           width: responsive.wp(100),
+      //           child: _appBarPost(context),
+      //         ),
+      //       ],
+      //     ),
+      //   ],
+      // ),
       body: SingleChildScrollView(
         child: Container(
           width: double.infinity,
-          height: responsive.height * 0.82,
+          height: responsive.height * 0.92,
           color: Colors.white,
           child: Stack(
             //alignment: Alignment.center,
