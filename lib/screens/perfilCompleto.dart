@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:social_fast/models/user_model.dart';
+import 'package:social_fast/screens/editarPerfil.dart';
 import 'package:social_fast/screens/login_screen.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:social_fast/ui/widgets.dart';
@@ -240,7 +241,10 @@ class _perfilCompletoState extends State<perfilCompleto> {
             child: Column(
               children: [
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => const editarPerfil()));
+                  },
                   child: Container(
                     padding: const EdgeInsets.all(4),
                     decoration: const BoxDecoration(
