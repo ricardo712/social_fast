@@ -5,6 +5,7 @@ import 'package:social_fast/screens/home_screen.dart';
 import 'package:social_fast/screens/infoPersonal.dart';
 import 'package:social_fast/screens/perfilCompleto.dart';
 import 'package:social_fast/screens/notificaciones.dart';
+import 'package:social_fast/screens/perfil_personal.dart';
 import 'package:social_fast/screens/view_pub.dart';
 import 'package:social_fast/utils/responsive.dart';
 import 'package:social_fast/views/perfil.dart';
@@ -26,7 +27,8 @@ class _raizState extends State<raiz> {
   final HomeSreen _homeScreen = const HomeSreen();
   final Notificaciones _notificaciones = Notificaciones();
   final viewPub _viewpub = const viewPub();
-  final buscarUser _buscarUser = new buscarUser();
+  final buscarUser _buscarUser = const buscarUser();
+  final perfilPersonal _perfilPersonal = const perfilPersonal();
 
   Widget _showPage = new HomeSreen();
   Widget _pageChoser(int page) {
@@ -38,7 +40,7 @@ class _raizState extends State<raiz> {
         return _buscarUser;
 
       case 2:
-        return _viewpub;
+        return _perfilPersonal; //_viewpub;
 
       case 3:
         return _notificaciones;
