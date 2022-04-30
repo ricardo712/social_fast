@@ -1,10 +1,22 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:social_fast/models/pub_model.dart';
 import 'package:social_fast/utils/responsive.dart';
 
 class informacionPersonal extends StatelessWidget {
-  const informacionPersonal({Key? key}) : super(key: key);
+  PubModel pubModel = PubModel();
+  double altura;
+  double ancho;
+  informacionPersonal(
+      {Key? key,
+      required this.pubModel,
+      required this.altura,
+      required this.ancho})
+      : assert(pubModel != null),
+        assert(altura != null),
+        assert(ancho != null),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +27,8 @@ class informacionPersonal extends StatelessWidget {
     final String numAmigos = "1";
 
     return Positioned(
-      top: responsive.hp(53),
+      top: responsive.hp(altura),
+      left: responsive.wp(ancho),
       child: Container(
         width: responsive.wp(88),
         height: responsive.hp(15),

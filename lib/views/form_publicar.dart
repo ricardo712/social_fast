@@ -11,14 +11,12 @@ import 'package:dio/dio.dart';
 
 import 'package:social_fast/widgets/input_comen.dart';
 
-class formPublicacion extends StatefulWidget {
-  const formPublicacion({Key? key}) : super(key: key);
+class formPublicacion extends StatelessWidget {
+  double altura;
+  formPublicacion({Key? key, required this.altura})
+      : assert(altura != null),
+        super(key: key);
 
-  @override
-  State<formPublicacion> createState() => _formPublicacionState();
-}
-
-class _formPublicacionState extends State<formPublicacion> {
   final TextEditingController publicacionController =
       new TextEditingController();
 
@@ -32,7 +30,7 @@ class _formPublicacionState extends State<formPublicacion> {
       controller: publicacionController,
       validator: (value) {
         if (value!.isEmpty) {
-          return ('Por favor ingrese su correo');
+          return ('No puede estar vacio.');
         }
       },
       onSaved: (value) {
@@ -50,7 +48,7 @@ class _formPublicacionState extends State<formPublicacion> {
     );
 
     return Positioned(
-      top: responsive.hp(70),
+      top: responsive.hp(altura),
       left: responsive.wp(2),
       right: responsive.wp(2),
       child: Column(

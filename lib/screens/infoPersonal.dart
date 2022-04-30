@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:social_fast/models/pub_model.dart';
 import 'package:social_fast/views/informacion_personal.dart';
 import 'package:social_fast/views/form_publicar.dart';
 
@@ -18,11 +19,24 @@ class infopersonal extends StatefulWidget {
 class _infopersonalState extends State<infopersonal> {
   final TextEditingController editarinfopersonalController =
       TextEditingController();
+  PubModel pubModel = PubModel();
+
+  void objeto(PubModel pubModel) {
+    pubModel.id = '1';
+    pubModel.uid = '1058';
+    pubModel.uName = 'Jhon Ruiz';
+    pubModel.mensaje = 'Un buen paisaje.';
+    pubModel.fecha = '07/04/2022';
+    pubModel.hora = '16:36';
+    pubModel.imagen = 'vacio';
+  }
+
   @override
   Widget build(BuildContext context) {
     Responsive resposive = Responsive(context);
     final double pinkSize = resposive.wp(90);
     final double orangeSize = resposive.wp(55);
+    objeto(pubModel);
     // const double ancho = 70;
     // const double alto = 5.5;
     final editarinfpersonal = TextFormField(
@@ -52,19 +66,19 @@ class _infopersonalState extends State<infopersonal> {
       ),
     );
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Editar información personal"),
-          backgroundColor: Colors.pink,
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.white),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
+      appBar: AppBar(
+        title: const Text("Editar información personal"),
+        backgroundColor: Colors.pink,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
         ),
-        body: GestureDetector(
-            child: SingleChildScrollView(
+      ),
+      body: GestureDetector(
+        child: SingleChildScrollView(
           child: Container(
             width: double.infinity,
             height: resposive.height,
@@ -179,88 +193,93 @@ class _infopersonalState extends State<infopersonal> {
                       ],
                     ),
                   ),
-                  const informacionPersonal(),
+                  informacionPersonal(
+                    altura: 20,
+                    pubModel: pubModel,
+                    ancho: 2,
+                  ),
                 ]),
               ),
-               Positioned(
-                 top: resposive.hp(45),
-                 child: Column(children: <Widget>[
-                   SizedBox(
-                     child: Row(
-                       children: [
-                         Text(
-                           "Pasatiempos ",
-                           textAlign: TextAlign.left,
-                           style: TextStyle(
-                             color: Colors.black,
-                             fontSize: resposive.dp(3),
-                             fontWeight: FontWeight.bold,
-                           ),
-                         ),
-                         SizedBox(
-                           width: resposive.wp(36),
-                         ),
-                         TextButton.icon(
-                           icon: const Icon(Icons.add_task),
-                           label: Text('Editar',
-                               textScaleFactor: resposive.dp(0.18)),
-                           style: TextButton.styleFrom(
-                             primary: Colors.white,
-                             padding:
-                                 const EdgeInsets.only(left: 7.0, right: 12.0),
-                             backgroundColor: Colors.pink,
-                             shape: RoundedRectangleBorder(
-                               borderRadius: BorderRadius.circular(50.0),
-                             ),
-                           ),
-                           onPressed: () {},
-                         ),
-                       ],
-                     ),
-                   ),
-                 ]
-                 ),
-               ),
-               Positioned(
-                 top: resposive.hp(60),
-                 child: Column(children: <Widget>[
-                   SizedBox(
-                     child: Row(
-                       children: [
-                         Text(
-                           "Destacados ",
-                           textAlign: TextAlign.left,
-                           style: TextStyle(
-                             color: Colors.black,
-                             fontSize: resposive.dp(3),
-                             fontWeight: FontWeight.bold,
-                           ),
-                         ),
-                         SizedBox(
-                           width: resposive.wp(35),
-                         ),
-                         TextButton.icon(
-                           icon: const Icon(Icons.add_a_photo),
-                           label: Text('Agregar',
-                               textScaleFactor: resposive.dp(0.18)),
-                           style: TextButton.styleFrom(
-                             primary: Colors.white,
-                             padding:
-                                 const EdgeInsets.only(left: 7.0, right: 12.0),
-                             backgroundColor: Colors.pink,
-                             shape: RoundedRectangleBorder(
-                               borderRadius: BorderRadius.circular(50.0),
-                             ),
-                           ),
-                           onPressed: () {},
-                         ),
-                       ],
-                     ),
-                   ),
-                 ]),
-               ),
+              Positioned(
+                top: resposive.hp(45),
+                child: Column(children: <Widget>[
+                  SizedBox(
+                    child: Row(
+                      children: [
+                        Text(
+                          "Pasatiempos ",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: resposive.dp(3),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(
+                          width: resposive.wp(36),
+                        ),
+                        TextButton.icon(
+                          icon: const Icon(Icons.add_task),
+                          label: Text('Editar',
+                              textScaleFactor: resposive.dp(0.18)),
+                          style: TextButton.styleFrom(
+                            primary: Colors.white,
+                            padding:
+                                const EdgeInsets.only(left: 7.0, right: 12.0),
+                            backgroundColor: Colors.pink,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50.0),
+                            ),
+                          ),
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                  ),
+                ]),
+              ),
+              Positioned(
+                top: resposive.hp(60),
+                child: Column(children: <Widget>[
+                  SizedBox(
+                    child: Row(
+                      children: [
+                        Text(
+                          "Destacados ",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: resposive.dp(3),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(
+                          width: resposive.wp(35),
+                        ),
+                        TextButton.icon(
+                          icon: const Icon(Icons.add_a_photo),
+                          label: Text('Agregar',
+                              textScaleFactor: resposive.dp(0.18)),
+                          style: TextButton.styleFrom(
+                            primary: Colors.white,
+                            padding:
+                                const EdgeInsets.only(left: 7.0, right: 12.0),
+                            backgroundColor: Colors.pink,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50.0),
+                            ),
+                          ),
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                  ),
+                ]),
+              ),
             ]),
           ),
-        )));
+        ),
+      ),
+    );
   }
 }

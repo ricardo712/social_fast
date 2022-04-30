@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:social_fast/models/pub_model.dart';
 import 'package:social_fast/models/user_model.dart';
 import 'package:social_fast/screens/editarPerfil.dart';
 import 'package:social_fast/screens/login_screen.dart';
@@ -24,6 +25,7 @@ class perfilCompleto extends StatefulWidget {
 class _perfilCompletoState extends State<perfilCompleto> {
   User? user = FirebaseAuth.instance.currentUser;
   UserModel loggedInUser = UserModel();
+  PubModel pubModel = PubModel();
 
   @override
   void initState() {
@@ -38,6 +40,16 @@ class _perfilCompletoState extends State<perfilCompleto> {
     });
   }
 
+  void objeto(PubModel pubModel) {
+    pubModel.id = '1';
+    pubModel.uid = '1058';
+    pubModel.uName = 'Jhon Ruiz';
+    pubModel.mensaje = 'Un buen paisaje.';
+    pubModel.fecha = '07/04/2022';
+    pubModel.hora = '16:36';
+    pubModel.imagen = 'vacio';
+  }
+
   @override
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive.of(context);
@@ -45,6 +57,7 @@ class _perfilCompletoState extends State<perfilCompleto> {
     final double orangeSize = responsive.wp(55);
     const userNombre = "Jhon Ruiz";
     const userNick = "Mensaje personal";
+    objeto(pubModel);
 
     return Scaffold(
       appBar: AppBar(
@@ -220,8 +233,12 @@ class _perfilCompletoState extends State<perfilCompleto> {
                     ],
                   ),
                 ),
-                const informacionPersonal(),
-                const formPublicacion(),
+                informacionPersonal(
+                  altura: 46,
+                  pubModel: pubModel,
+                  ancho: 4,
+                ),
+                formPublicacion(altura: 60),
                 //const mostrarPublicacion(),
               ],
             ),
