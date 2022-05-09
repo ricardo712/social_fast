@@ -58,7 +58,7 @@ class buscarUser extends StatelessWidget {
       ),
       body: SizedBox(
         width: double.infinity,
-        height: responsive.height * 0.82,
+        height: responsive.height * 0.815,
         child: Stack(
           children: <Widget>[
             Positioned(

@@ -170,13 +170,15 @@ class _perfilPersonalState extends State<perfilPersonal> {
                           ],
                         ),
                       ),
+                      // const Divider(),
                       informacionPersonal(
                         altura: 45.0,
                         pubModel: pubModel,
                         ancho: 3,
                       ),
+                      // const Divider(),
                       Positioned(
-                        top: responsive.hp(57),
+                        top: responsive.hp(58),
                         left: responsive.wp(9),
                         child: SizedBox(
                           child: Row(
@@ -230,8 +232,9 @@ class _perfilPersonalState extends State<perfilPersonal> {
                           ),
                         ),
                       ),
+                      // const Divider(),
                       Positioned(
-                        top: responsive.hp(62.5),
+                        top: responsive.hp(64),
                         left: responsive.wp(4),
                         child: Text(
                           "Amigos",
@@ -242,8 +245,9 @@ class _perfilPersonalState extends State<perfilPersonal> {
                           ),
                         ),
                       ),
+                      // const Divider(),
                       Positioned(
-                        top: responsive.hp(68),
+                        top: responsive.hp(69.8),
                         child: Container(
                           padding: EdgeInsets.all(responsive.wp(1)),
                           height: responsive.hp(12),
@@ -264,7 +268,8 @@ class _perfilPersonalState extends State<perfilPersonal> {
                           ), // ? ListView.builder
                         ),
                       ),
-                      formPublicacion(altura: 80),
+                      // const Divider(),
+                      formPublicacion(altura: 82.8),
                       //const mostrarPublicacion(),
                     ],
                   ),
