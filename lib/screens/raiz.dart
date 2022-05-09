@@ -40,13 +40,13 @@ class _raizState extends State<raiz> {
         return _buscarUser;
 
       case 2:
-        return _perfilPersonal; //_viewpub;
+        return _viewpub;
 
       case 3:
         return _notificaciones;
 
       case 4:
-        return _perfil;
+        return _perfilPersonal;
 
       default:
         return const Center(

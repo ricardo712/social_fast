@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:social_fast/models/pub_model.dart';
+import 'package:social_fast/screens/perfil_personal.dart';
 import 'package:social_fast/views/informacion_personal.dart';
 import 'package:social_fast/views/form_publicar.dart';
 
@@ -73,7 +74,7 @@ class _infopersonalState extends State<infopersonal> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const perfilPersonal(),));
           },
         ),
       ),

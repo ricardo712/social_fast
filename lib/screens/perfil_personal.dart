@@ -114,26 +114,26 @@ class _perfilPersonalState extends State<perfilPersonal> {
                     children: <Widget>[
                       Positioned(
                         top: pinkSize * 0.25,
-                        left: responsive.wp(13),
+                        left: responsive.wp(8),
                         child: Column(
                           children: <Widget>[
                             IconContainer(
                               //tamaño del icono avatar
-                              size: responsive.wp(30),
+                              size: responsive.wp(20),
                             ),
                             SizedBox(
-                              height: responsive.dp(3),
+                              height: responsive.dp(1),
                             ),
                             Text(
                               userNombre,
-                              textAlign: TextAlign.center,
+                              textAlign: TextAlign.right,
                               style: TextStyle(
-                                fontSize: responsive.dp(4),
+                                fontSize: responsive.dp(3),
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                             const SizedBox(
-                              height: 5,
+                              height: 1,
                             ),
 
                             const Divider(),
@@ -156,11 +156,8 @@ class _perfilPersonalState extends State<perfilPersonal> {
                                       ),
                                     ),
                                     onPressed: () {
-                                      Fluttertoast.showToast(
-                                        msg: "Ingresando...",
-                                        //fontSize: 5,
-                                        //gravity: ToastGravity.TOP,
-                                      );
+                                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                                      builder: (context) => infopersonal()));
                                     },
                                   ),
                                 ],
@@ -171,7 +168,7 @@ class _perfilPersonalState extends State<perfilPersonal> {
                         ),
                       ),
                       informacionPersonal(
-                        altura: 45.0,
+                        altura: 40.0,
                         pubModel: pubModel,
                         ancho: 3,
                       ),
