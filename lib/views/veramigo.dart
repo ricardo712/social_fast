@@ -27,7 +27,7 @@ class verAmigo extends StatelessWidget {
         Column(
           children: <Widget>[
             const CircleAvatar(
-              radius: 25,
+              radius: 20,
               backgroundImage: AssetImage('assets/img/pru1.jpeg'),
             ),
             SizedBox(
@@ -37,7 +37,7 @@ class verAmigo extends StatelessWidget {
               width: responsive.wp(13),
               child: Text(
                 nameUser,
-                textAlign: TextAlign.start,
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: responsive.dp(1.5),
                   fontWeight: FontWeight.normal,

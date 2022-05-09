@@ -126,7 +126,7 @@ class _perfilPersonalState extends State<perfilPersonal> {
                             ),
                             Text(
                               userNombre,
-                              textAlign: TextAlign.right,
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: responsive.dp(3),
                                 fontWeight: FontWeight.bold,
