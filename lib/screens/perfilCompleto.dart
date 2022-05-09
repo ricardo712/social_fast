@@ -234,11 +234,11 @@ class _perfilCompletoState extends State<perfilCompleto> {
                   ),
                 ),
                 informacionPersonal(
-                  altura: 46,
+                  altura: 50,
                   pubModel: pubModel,
                   ancho: 4,
                 ),
-                formPublicacion(altura: 60),
+                formPublicacion(altura: 65),
                 //const mostrarPublicacion(),
               ],
             ),
