@@ -51,7 +51,7 @@ class _HomeSreenState extends State<HomeSreen> {
       body: SingleChildScrollView(
         child: Container(
           width: double.infinity,
-          height: resposive.height,
+          height: resposive.height * 0.815,
           color: Colors.white,
           child: Stack(
             alignment: Alignment.center,
@@ -115,7 +115,13 @@ class _HomeSreenState extends State<HomeSreen> {
               ),
               ListView(
                 padding: EdgeInsets.all(resposive.dp(1.4)),
-                children: [modPublicacion(pubModel: pubmodel)],
+                children: [
+                  modPublicacion(pubModel: pubmodel),
+                  SizedBox(
+                    height: resposive.hp(1),
+                  ),
+                  modPublicacion(pubModel: pubmodel),
+                ],
               ),
             ],
           ),

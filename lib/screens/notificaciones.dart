@@ -51,131 +51,129 @@ class _NotificacionesState extends State<Notificaciones> {
     String like = "Le gusta tu foto a ";
 
     return Scaffold(
-      // appBar: AppBar(
-      //   actions: [
-      //     Column(
-      //       children: [
-      //         SizedBox(
-      //           height: responsive.hp(6.8),
-      //           width: responsive.wp(100),
-      //           child: _appBarPost(context),
-      //         ),
-      //       ],
-      //     ),
-      //   ],
-      // ),
-      body: SingleChildScrollView(
-        child: Container(
-          width: double.infinity,
-          height: responsive.height * 0.92,
-          color: Colors.white,
-          child: Stack(
-            //alignment: Alignment.center,
-            children: <Widget>[
-              Positioned(
-                right: -(pinkSize) * 0.3,
-                top: -(pinkSize) * 0.5,
-                child: Circle(
-                  size: pinkSize,
-                  colors: const [
-                    Colors.pink,
-                    Colors.pinkAccent,
-                    //Colors.yellow,
-                  ],
+      appBar: AppBar(
+        title: Text(
+          'Publicaciones',
+          style: TextStyle(fontSize: responsive.dp(3)),
+        ),
+        centerTitle: true,
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Container(
+            width: double.infinity,
+            height: responsive.height * 0.815,
+            color: Colors.white,
+            child: Stack(
+              //alignment: Alignment.center,
+              children: <Widget>[
+                Positioned(
+                  right: -(pinkSize) * 0.3,
+                  top: -(pinkSize) * 0.5,
+                  child: Circle(
+                    size: pinkSize,
+                    colors: const [
+                      Colors.pink,
+                      Colors.pinkAccent,
+                      //Colors.yellow,
+                    ],
+                  ),
                 ),
-              ),
-              Positioned(
-                left: -(orangeSize) * 0.1,
-                top: -(orangeSize) * 0.6,
-                child: Circle(
-                  size: orangeSize,
-                  colors: const [
-                    Colors.orange,
-                    Colors.deepOrangeAccent,
-                    //Colors.yellow,
-                  ],
+                Positioned(
+                  left: -(orangeSize) * 0.1,
+                  top: -(orangeSize) * 0.6,
+                  child: Circle(
+                    size: orangeSize,
+                    colors: const [
+                      Colors.orange,
+                      Colors.deepOrangeAccent,
+                      //Colors.yellow,
+                    ],
+                  ),
                 ),
-              ),
-              ListView(
-                padding: EdgeInsets.all(responsive.dp(1.5)),
-                children: <Widget>[
-                  Container(
-                    //color: Colors.deepPurpleAccent,
-                    padding: EdgeInsets.all(responsive.dp(2)),
-                    width: responsive.wp(94.3),
-                    //height: responsive.hp(85),
-                    decoration: BoxDecoration(
-                      color: Colors.white54,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(
-                          responsive.dp(7),
-                        ),
-                      ),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          "Notificaciones.",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: responsive.dp(3),
-                            fontWeight: FontWeight.bold,
+                ListView(
+                  padding: EdgeInsets.all(responsive.dp(1.5)),
+                  children: <Widget>[
+                    Container(
+                      //color: Colors.deepPurpleAccent,
+                      padding: EdgeInsets.all(responsive.dp(2)),
+                      width: responsive.wp(94.3),
+                      //height: responsive.hp(85),
+                      decoration: BoxDecoration(
+                        color: Colors.white38,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(
+                            responsive.dp(7),
                           ),
                         ),
-                        Row(
-                          children: [
-                            Text(
-                              "Nuevas.",
-                              //textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: responsive.dp(2),
-                                fontWeight: FontWeight.bold,
-                              ),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            "Notificaciones.",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: responsive.dp(3),
+                              fontWeight: FontWeight.bold,
                             ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: responsive.hp(1),
-                        ),
-                        modNotificacion(mensaje: sugerencia, name: "Jhon Ruiz"),
-                        SizedBox(
-                          height: responsive.hp(1),
-                        ),
-                        modNotificacion(
-                          mensaje: sugerencia,
-                          name: "Mateo Avila",
-                        ),
-                        SizedBox(
-                          height: responsive.hp(1),
-                        ),
-                        modNotificacion(mensaje: sugerencia, name: "Carmen St"),
-                        SizedBox(height: responsive.hp(1)),
-                        Row(
-                          children: [
-                            Text(
-                              "Anteriores.",
-                              //textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: responsive.dp(2),
-                                fontWeight: FontWeight.bold,
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                "Nuevas.",
+                                //textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: responsive.dp(2),
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: responsive.hp(1)),
-                        modNotificacion(mensaje: like, name: "Carmen St"),
-                        SizedBox(height: responsive.hp(1)),
-                        modNotificacion(mensaje: like, name: "Anastasia "),
-                        SizedBox(height: responsive.hp(1)),
-                        modNotificacion(mensaje: like, name: "Anastasia "),
-                        SizedBox(height: responsive.hp(1)),
-                      ],
+                            ],
+                          ),
+                          SizedBox(
+                            height: responsive.hp(1),
+                          ),
+                          modNotificacion(
+                              mensaje: sugerencia, name: "Jhon Ruiz"),
+                          SizedBox(
+                            height: responsive.hp(1),
+                          ),
+                          modNotificacion(
+                            mensaje: sugerencia,
+                            name: "Mateo Avila",
+                          ),
+                          SizedBox(
+                            height: responsive.hp(1),
+                          ),
+                          modNotificacion(
+                              mensaje: sugerencia, name: "Carmen St"),
+                          SizedBox(height: responsive.hp(1)),
+                          Row(
+                            children: [
+                              Text(
+                                "Anteriores.",
+                                //textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: responsive.dp(2),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: responsive.hp(1)),
+                          modNotificacion(mensaje: like, name: "Carmen St"),
+                          SizedBox(height: responsive.hp(1)),
+                          modNotificacion(mensaje: like, name: "Anastasia "),
+                          SizedBox(height: responsive.hp(1)),
+                          modNotificacion(mensaje: like, name: "Anastasia "),
+                          SizedBox(height: responsive.hp(1)),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
