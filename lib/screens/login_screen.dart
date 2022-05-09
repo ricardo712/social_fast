@@ -82,6 +82,9 @@ class _LoginScreenState extends State<LoginScreen> {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
+        suffixIcon: (
+          const Icon(Icons.visibility)
+        ),
       ),
     );
     final loginButton = Material(

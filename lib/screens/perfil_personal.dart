@@ -114,7 +114,7 @@ class _perfilPersonalState extends State<perfilPersonal> {
                     children: <Widget>[
                       Positioned(
                         top: pinkSize * 0.25,
-                        left: responsive.wp(8),
+                        left: responsive.wp(25), 
                         child: Column(
                           children: <Widget>[
                             IconContainer(
