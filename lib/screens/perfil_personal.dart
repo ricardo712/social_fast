@@ -105,174 +105,148 @@ class _perfilPersonalState extends State<perfilPersonal> {
             ListView(
               padding: EdgeInsets.all(responsive.dp(1.5)),
               children: <Widget>[
+                Column(
+                  children: <Widget>[
+                    SizedBox(
+                      height: responsive.hp(10),
+                    ),
+                    IconContainer(
+                      //tamaño del icono avatar
+                      size: responsive.wp(25),
+                    ),
+                    SizedBox(
+                      height: responsive.dp(1),
+                    ),
+                    Text(
+                      userNombre,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: responsive.dp(3),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 1,
+                    ),
+                    TextButton.icon(
+                      icon: const Icon(Icons.edit),
+                      label: Text('Editar perfil',
+                          textScaleFactor: responsive.dp(0.18)),
+                      style: TextButton.styleFrom(
+                        primary: Colors.white,
+                        padding: const EdgeInsets.only(left: 12.0, right: 12.0),
+                        backgroundColor: Colors.pink,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50.0),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (context) => infopersonal()));
+                      },
+                    ),
+
+                    //const Divider(),
+                    SizedBox(
+                      height: responsive.hp(1),
+                    ),
+                    // SizedBox(
+                    //   child: Row(
+                    //     children: [],
+                    //   ),
+                    // ),
+                    //permite crear contenedor
+                  ],
+                ),
+                // const Divider(),
+                informacionPersonal(
+                  altura: 0,
+                  pubModel: pubModel,
+                  ancho: 3,
+                ),
+                // const Divider(),
                 SizedBox(
-                  width: double.infinity,
-                  height: responsive.height * 1.2,
-                  //color: Colors.white,
-                  child: Stack(
-                    //alignment: Alignment.center,
-                    children: <Widget>[
-                      Positioned(
-                        top: pinkSize * 0.25,
-                        left: responsive.wp(25),
-                        child: Column(
-                          children: <Widget>[
-                            IconContainer(
-                              //tamaño del icono avatar
-                              size: responsive.wp(20),
-                            ),
-                            SizedBox(
-                              height: responsive.dp(1),
-                            ),
-                            Text(
-                              userNombre,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: responsive.dp(3),
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 1,
-                            ),
-
-                            const Divider(),
-                            //SizedBox(height: 5.0),
-                            SizedBox(
-                              child: Row(
-                                children: [
-                                  TextButton.icon(
-                                    icon: const Icon(Icons.edit),
-                                    label: Text('Editar perfil',
-                                        textScaleFactor: responsive.dp(0.18)),
-                                    style: TextButton.styleFrom(
-                                      primary: Colors.white,
-                                      padding: const EdgeInsets.only(
-                                          left: 12.0, right: 12.0),
-                                      backgroundColor: Colors.pink,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(50.0),
-                                      ),
-                                    ),
-                                    onPressed: () {
-                                      Navigator.of(context).pushReplacement(
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  infopersonal()));
-                                    },
-                                  ),
-                                ],
-                              ),
-                            ),
-                            //permite crear contenedor
-                          ],
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextButton.icon(
+                        icon: const Icon(Icons.edit),
+                        label: Text('Editar informacion.',
+                            textScaleFactor: responsive.dp(0.18)),
+                        style: TextButton.styleFrom(
+                          primary: Colors.white,
+                          padding:
+                              const EdgeInsets.only(left: 12.0, right: 12.0),
+                          backgroundColor: Colors.pink,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50.0),
+                          ),
                         ),
+                        onPressed: () {
+                          Fluttertoast.showToast(
+                            msg: "Ingresando...",
+                            //fontSize: 5,
+                            //gravity: ToastGravity.TOP,
+                          );
+                        },
                       ),
-                      // const Divider(),
-                      informacionPersonal(
-                        altura: 40.0,
-                        pubModel: pubModel,
-                        ancho: 3,
+                      SizedBox(
+                        width: responsive.wp(1),
                       ),
-                      // const Divider(),
-                      Positioned(
-                        top: responsive.hp(58),
-                        left: responsive.wp(9),
-                        child: SizedBox(
-                          child: Row(
-                            children: [
-                              TextButton.icon(
-                                icon: const Icon(Icons.edit),
-                                label: Text('Editar informacion.',
-                                    textScaleFactor: responsive.dp(0.18)),
-                                style: TextButton.styleFrom(
-                                  primary: Colors.white,
-                                  padding: const EdgeInsets.only(
-                                      left: 12.0, right: 12.0),
-                                  backgroundColor: Colors.pink,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50.0),
-                                  ),
-                                ),
-                                onPressed: () {
-                                  Fluttertoast.showToast(
-                                    msg: "Ingresando...",
-                                    //fontSize: 5,
-                                    //gravity: ToastGravity.TOP,
-                                  );
-                                },
-                              ),
-                              SizedBox(
-                                width: responsive.wp(1),
-                              ),
-                              TextButton.icon(
-                                icon: const Icon(Icons.ads_click),
-                                label: const Text(''),
-                                onPressed: () {
-                                  Fluttertoast.showToast(
-                                    msg: "Opciones",
-                                    gravity: ToastGravity.CENTER_LEFT,
-                                  );
-                                  //?opciones
-                                  opciones(context);
-                                },
-                                style: TextButton.styleFrom(
-                                  padding: const EdgeInsets.only(
-                                      left: 8.0, right: 4),
-                                  backgroundColor: Colors.pink,
-                                  primary: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50.0),
-                                  ),
-                                ),
-                              ),
-                            ],
+                      TextButton.icon(
+                        icon: const Icon(Icons.ads_click),
+                        label: const Text(''),
+                        onPressed: () {
+                          Fluttertoast.showToast(
+                            msg: "Opciones",
+                            gravity: ToastGravity.CENTER_LEFT,
+                          );
+                          //?opciones
+                          opciones(context);
+                        },
+                        style: TextButton.styleFrom(
+                          padding: const EdgeInsets.only(left: 8.0, right: 4),
+                          backgroundColor: Colors.pink,
+                          primary: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50.0),
                           ),
                         ),
                       ),
-                      // const Divider(),
-                      Positioned(
-                        top: responsive.hp(64),
-                        left: responsive.wp(4),
-                        child: Text(
-                          "Amigos",
-                          textAlign: TextAlign.end,
-                          style: TextStyle(
-                            fontSize: responsive.dp(4),
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      // const Divider(),
-                      Positioned(
-                        top: responsive.hp(69.8),
-                        child: Container(
-                          padding: EdgeInsets.all(responsive.wp(1)),
-                          height: responsive.hp(12),
-                          width: responsive.width,
-                          //color: Colors.grey.shade300,
-
-                          child: ListView(
-                            scrollDirection: Axis.horizontal,
-                            children: [
-                              Row(
-                                //mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  verAmigo(altura: 68, pubModel: pubModel),
-                                  SizedBox(width: responsive.wp(1)),
-                                ],
-                              ),
-                            ],
-                          ), // ? ListView.builder
-                        ),
-                      ),
-                      // const Divider(),
-                      formPublicacion(altura: 82.8),
-                      //const mostrarPublicacion(),
                     ],
                   ),
                 ),
+                // const Divider(),
+                Text(
+                  "Amigos",
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    fontSize: responsive.dp(4),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                // const Divider(),
+                Container(
+                  padding: EdgeInsets.all(responsive.wp(1)),
+                  height: responsive.hp(12),
+                  width: responsive.width,
+                  //color: Colors.grey.shade300,
+
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      Row(
+                        //mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          verAmigo(altura: 68, pubModel: pubModel),
+                          SizedBox(width: responsive.wp(1)),
+                        ],
+                      ),
+                    ],
+                  ), // ? ListView.builder
+                ),
+                // const Divider(),
+                formPublicacion(altura: 82.8),
               ],
             )
           ],

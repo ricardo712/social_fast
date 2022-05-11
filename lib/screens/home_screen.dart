@@ -69,7 +69,7 @@ class _HomeSreenState extends State<HomeSreen> {
                   ],
                 ),
               ),
-              
+
               Positioned(
                 left: -(orangeSize) * 0.1,
                 top: -(orangeSize) * 0.6,
@@ -82,8 +82,7 @@ class _HomeSreenState extends State<HomeSreen> {
                   ],
                 ),
               ),
-              
-              
+
               // Positioned(
               //   top: resposive.hp(30),
               //   child: Text(
@@ -120,15 +119,15 @@ class _HomeSreenState extends State<HomeSreen> {
               ListView(
                 padding: EdgeInsets.all(resposive.dp(1.4)),
                 children: [
-                  formPublicacion(altura: 0, ),
-                   SizedBox(
-                    height: resposive.hp(1),
-                  ),
-                  modPublicacion(pubModel: pubmodel),
+                  formPublicacion(altura: 0),
+                  SizedBox(height: resposive.hp(1)),
                   SizedBox(
                     height: resposive.hp(1),
                   ),
                   modPublicacion(pubModel: pubmodel),
+                  SizedBox(height: resposive.hp(1)),
+                  modPublicacion(pubModel: pubmodel),
+                  SizedBox(height: resposive.hp(1)),
                 ],
               ),
             ],
