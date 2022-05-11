@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:social_fast/screens/raiz.dart';
 import 'package:social_fast/utils/responsive.dart';
 
 import '../widgets/circle.dart';
@@ -51,7 +52,7 @@ class _editarPerfilState extends State<editarPerfil> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back, color: Colors.white),
             onPressed: () {
-              Navigator.of(context).pop();
+               Navigator.push(context, MaterialPageRoute(builder: (context) =>  raiz(),));
             },
           ),
         ),

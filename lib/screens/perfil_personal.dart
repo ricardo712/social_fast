@@ -105,21 +105,21 @@ class _perfilPersonalState extends State<perfilPersonal> {
             ListView(
               padding: EdgeInsets.all(responsive.dp(1.5)),
               children: <Widget>[
-                Container(
+                SizedBox(
                   width: double.infinity,
-                  height: responsive.height * 1.3,
+                  height: responsive.height,
                   //color: Colors.white,
                   child: Stack(
                     //alignment: Alignment.center,
                     children: <Widget>[
                       Positioned(
                         top: pinkSize * 0.25,
-                        left: responsive.wp(23),
+                        left: responsive.wp(25),
                         child: Column(
                           children: <Widget>[
                             IconContainer(
                               //tamaño del icono avatar
-                              size: responsive.wp(25),
+                              size: responsive.wp(20),
                             ),
                             SizedBox(
                               height: responsive.dp(1),

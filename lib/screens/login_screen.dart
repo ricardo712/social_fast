@@ -19,6 +19,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  bool mostrarpassword= true;
 
   final _auth = FirebaseAuth.instance;
 
@@ -59,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final passwordField = TextFormField(
       autofocus: false,
       controller: passwordController,
-      obscureText: true,
+      obscureText: mostrarpassword,
       validator: (value) {
         RegExp regex = RegExp(r'^.{6,}$');
         if (value!.isEmpty) {
@@ -81,6 +82,12 @@ class _LoginScreenState extends State<LoginScreen> {
         hintText: "Password",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
+        ),
+        suffixIcon: InkWell(
+          onTap: _mirarpassword,
+          child: (
+            const Icon(Icons.visibility)
+          ),
         ),
       ),
     );
@@ -223,6 +230,14 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+  void _mirarpassword(){
+    if (mostrarpassword == true){
+      mostrarpassword = false;
+    }else{
+      mostrarpassword = true;
+    }
+    setState(() {});
   }
 
   sigIn(String email, String password) async {
