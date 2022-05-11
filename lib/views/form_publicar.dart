@@ -164,7 +164,7 @@ class _formPublicacionState extends State<formPublicacion> {
                     width: responsive.width * .4,
                     height: responsive.height * .2,
                     color: Colors.orange,
-                    child: Image(
+                    child: const Image(
                       image: NetworkImage(
                           "https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg"),
                       fit: BoxFit.cover,

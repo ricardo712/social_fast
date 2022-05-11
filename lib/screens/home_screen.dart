@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:social_fast/models/pub_model.dart';
 import 'package:social_fast/screens/login_screen.dart';
 import 'package:social_fast/models/user_model.dart';
+import 'package:social_fast/views/form_publicar.dart';
 import 'package:social_fast/widgets/mod_publicacion.dart';
 
 import 'package:social_fast/utils/responsive.dart';
@@ -68,6 +69,7 @@ class _HomeSreenState extends State<HomeSreen> {
                   ],
                 ),
               ),
+              
               Positioned(
                 left: -(orangeSize) * 0.1,
                 top: -(orangeSize) * 0.6,
@@ -80,42 +82,48 @@ class _HomeSreenState extends State<HomeSreen> {
                   ],
                 ),
               ),
-              Positioned(
-                top: resposive.hp(30),
-                child: Text(
-                  'Bienvenido',
-                  style: TextStyle(
-                      fontSize: resposive.dp(4), fontWeight: FontWeight.bold),
-                ),
-              ),
-              Positioned(
-                top: resposive.hp(36),
-                child: Text(
-                  "${loggedInUser.name} ${loggedInUser.lastname}",
-                  style: const TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.w500),
-                ),
-              ),
-              Positioned(
-                top: resposive.hp(38.3),
-                child: Text(
-                  "${loggedInUser.email}",
-                  style: const TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.w500),
-                ),
-              ),
-              Positioned(
-                top: resposive.hp(41),
-                child: ActionChip(
-                  label: const Text('Salir'),
-                  onPressed: () {
-                    salir(context);
-                  },
-                ),
-              ),
+              
+              
+              // Positioned(
+              //   top: resposive.hp(30),
+              //   child: Text(
+              //     'Bienvenido',
+              //     style: TextStyle(
+              //         fontSize: resposive.dp(4), fontWeight: FontWeight.bold),
+              //   ),
+              // ),
+              // Positioned(
+              //   top: resposive.hp(36),
+              //   child: Text(
+              //     "${loggedInUser.name} ${loggedInUser.lastname}",
+              //     style: const TextStyle(
+              //         color: Colors.black, fontWeight: FontWeight.w500),
+              //   ),
+              // ),
+              // Positioned(
+              //   top: resposive.hp(38.3),
+              //   child: Text(
+              //     "${loggedInUser.email}",
+              //     style: const TextStyle(
+              //         color: Colors.black, fontWeight: FontWeight.w500),
+              //   ),
+              // ),
+              // Positioned(
+              //   top: resposive.hp(41),
+              //   child: ActionChip(
+              //     label: const Text('Salir'),
+              //     onPressed: () {
+              //       salir(context);
+              //     },
+              //   ),
+              // ),
               ListView(
                 padding: EdgeInsets.all(resposive.dp(1.4)),
                 children: [
+                  formPublicacion(altura: 0, ),
+                   SizedBox(
+                    height: resposive.hp(1),
+                  ),
                   modPublicacion(pubModel: pubmodel),
                   SizedBox(
                     height: resposive.hp(1),
