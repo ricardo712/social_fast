@@ -48,127 +48,152 @@ class _formPublicacionState extends State<formPublicacion> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        prefixIcon: const Icon(Icons.add_comment),
+        prefixIcon: const Icon(
+          Icons.add_comment,
+          //color: Colors.white,
+        ),
         contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Agregar publicacion.",
+        //hintStyle: TextStyle(color: Colors.white),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
       ),
     );
 
-    return Column(
-      children: <Widget>[
-        Row(
-          children: <Widget>[
-            const CircleAvatar(
-              radius: 25,
-              backgroundImage: AssetImage('assets/img/pru1.jpeg'),
-            ),
-            SizedBox(
-              width: responsive.wp(2),
-            ),
-            Expanded(
-              child: GestureDetector(
-                onTap: () => Navigator.pushNamed(context, "/publicacion"),
-                child:
-                    publicacionField, /*const InputComent(
-                  keyboardType: TextInputType.text,
-                  label: "Agregar publicacion.",
-                ),*/
+    return Container(
+      width: double.maxFinite,
+      //color: Colors.black38,
+      decoration: BoxDecoration(
+        color: Colors.black26,
+        borderRadius: BorderRadius.all(
+          Radius.circular(
+            responsive.dp(3.5),
+          ),
+        ),
+      ),
+      child: Column(
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              SizedBox(
+                width: responsive.wp(1.2),
+                height: responsive.hp(8),
               ),
-            ),
-            IconButton(
-              padding: const EdgeInsets.symmetric(vertical: 0),
-              onPressed: () {
-                auth.requesUpdateImage(_image!, publicacionController.text, "");
+              const CircleAvatar(
+                radius: 25,
+                backgroundImage: AssetImage('assets/img/pru1.jpeg'),
+              ),
+              SizedBox(
+                width: responsive.wp(2),
+              ),
+              Expanded(
+                child: GestureDetector(
+                  onTap: () => Navigator.pushNamed(context, "/publicacion"),
+                  child:
+                      publicacionField, /*const InputComent(
+                    keyboardType: TextInputType.text,
+                    label: "Agregar publicacion.",
+                  ),*/
+                ),
+              ),
+              IconButton(
+                padding: const EdgeInsets.symmetric(vertical: 0),
+                onPressed: () {
+                  auth.requesUpdateImage(
+                      _image!, publicacionController.text, "");
 
-                Fluttertoast.showToast(
-                    msg:
-                        "Agregando publicación. " + publicacionController.text);
-                publicacionController.text = "";
-              },
-              icon: const Icon(Icons.send),
-            ),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconButton(
-                splashRadius: 20,
-                onPressed: () async {
-                  Fluttertoast.showToast(msg: "Abriendo galeria");
-
-                  _openGallery(context);
-
-                  // final results = await FilePicker.platform.pickFiles(
-                  //   allowMultiple: false,
-                  //   type: FileType.custom,
-                  //   allowedExtensions: ['png', 'jpg'],
-                  // );
-                  // if (results == null) {
-                  //   ScaffoldMessenger.of(context).showSnackBar(
-                  //     const SnackBar(
-                  //       content: Text("No hay archivos seleccionados."),
-                  //     ),
-                  //   );
-                  //   return;
-                  // }
-                  // final path = results.files.single.path!;
-                  // final fileName = results.files.single.name;
-                  // print(path);
-                  // print(fileName);
-
-                  // uploadImage();
-                  // storage //?Carga de imagen a firebase
-                  //        .uploadFile(path, fileName)
-                  //        .then((value) => print('Imagen cargada.'));
+                  Fluttertoast.showToast(
+                      msg: "Agregando publicación. " +
+                          publicacionController.text);
+                  publicacionController.text = "";
                 },
-                icon: const Icon(
-                    Icons.photo)), //SvgPicture.asset('assets/svg/gallery.svg')
+                icon: const Icon(Icons.send),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                  splashRadius: 20,
+                  onPressed: () async {
+                    Fluttertoast.showToast(msg: "Abriendo galeria");
 
-            IconButton(
-                splashRadius: 20,
-                onPressed: () async {
-                  Fluttertoast.showToast(msg: "Abriendo camara");
-                  _openCamera(context);
-                },
-                icon: const Icon(Icons.camera_alt)),
-            // IconButton(
-            //     splashRadius: 20,
-            //     onPressed: () {
-            //       Fluttertoast.showToast(msg: "Abriendo GIFS");
-            //     },
-            //     icon: const Icon(Icons.gif)),
-            // IconButton(
-            //     splashRadius: 20,
-            //     onPressed: () {
-            //       Fluttertoast.showToast(msg: "Abriendo maps");
-            //     },
-            //     icon: const Icon(Icons.location_on)),
-          ],
-        ),
-        //? agregar vizualizador
-        _image != null
-            ? CircleAvatar(
-                backgroundImage: FileImage(_image!),
-                radius: 75.0,
-              )
-            : Container()
-        // ClipOval(
-        //     child: Container(
-        //       width: responsive.width * .4,
-        //       height: responsive.height * .2,
-        //       color: Colors.orange,
-        //       child: const Image(
-        //         image: NetworkImage(
-        //             "https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg"),
-        //         fit: BoxFit.cover,
-        //       ),
-        //     ),
-        //   ),
-      ],
+                    _openGallery(context);
+
+                    // final results = await FilePicker.platform.pickFiles(
+                    //   allowMultiple: false,
+                    //   type: FileType.custom,
+                    //   allowedExtensions: ['png', 'jpg'],
+                    // );
+                    // if (results == null) {
+                    //   ScaffoldMessenger.of(context).showSnackBar(
+                    //     const SnackBar(
+                    //       content: Text("No hay archivos seleccionados."),
+                    //     ),
+                    //   );
+                    //   return;
+                    // }
+                    // final path = results.files.single.path!;
+                    // final fileName = results.files.single.name;
+                    // print(path);
+                    // print(fileName);
+
+                    // uploadImage();
+                    // storage //?Carga de imagen a firebase
+                    //        .uploadFile(path, fileName)
+                    //        .then((value) => print('Imagen cargada.'));
+                  },
+                  icon: const Icon(Icons
+                      .photo)), //SvgPicture.asset('assets/svg/gallery.svg')
+
+              IconButton(
+                  splashRadius: 20,
+                  onPressed: () async {
+                    Fluttertoast.showToast(msg: "Abriendo camara");
+                    _openCamera(context);
+                  },
+                  icon: const Icon(Icons.camera_alt)),
+              // IconButton(
+              //     splashRadius: 20,
+              //     onPressed: () {
+              //       Fluttertoast.showToast(msg: "Abriendo GIFS");
+              //     },
+              //     icon: const Icon(Icons.gif)),
+              // IconButton(
+              //     splashRadius: 20,
+              //     onPressed: () {
+              //       Fluttertoast.showToast(msg: "Abriendo maps");
+              //     },
+              //     icon: const Icon(Icons.location_on)),
+            ],
+          ),
+          //? agregar vizualizador
+          _image != null
+              ? CircleAvatar(
+                  backgroundImage: FileImage(_image!),
+                  radius: 75.0,
+                )
+              : Container(),
+
+          SizedBox(
+            height: responsive.hp(1),
+          )
+          // ClipOval(
+          //     child: Container(
+          //       width: responsive.width * .4,
+          //       height: responsive.height * .2,
+          //       color: Colors.orange,
+          //       child: const Image(
+          //         image: NetworkImage(
+          //             "https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg"),
+          //         fit: BoxFit.cover,
+          //       ),
+          //     ),
+          //   ),
+        ],
+      ),
     );
   }
 

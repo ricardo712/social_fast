@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:social_fast/models/pub_model.dart';
 import 'package:social_fast/services/storage_service.dart';
@@ -7,7 +9,9 @@ import 'package:social_fast/utils/responsive.dart';
 class verAmigo extends StatelessWidget {
   double altura;
   PubModel pubModel;
-  verAmigo({Key? key, required this.altura, required this.pubModel})
+  File? fotoPerfil;
+  verAmigo(
+      {Key? key, required this.altura, required this.pubModel, this.fotoPerfil})
       : assert(altura != null),
         assert(pubModel != null),
         super(key: key);

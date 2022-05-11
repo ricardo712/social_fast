@@ -238,7 +238,7 @@ class _perfilPersonalState extends State<perfilPersonal> {
                       Row(
                         //mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          verAmigo(altura: 68, pubModel: pubModel),
+                          verAmigo(altura: 0, pubModel: pubModel),
                           SizedBox(width: responsive.wp(1)),
                         ],
                       ),

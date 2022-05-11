@@ -23,7 +23,7 @@ class modPublicacion extends StatelessWidget {
       width: resposive.wp(94.3),
       height: resposive.hp(67),
       decoration: BoxDecoration(
-        color: Colors.orangeAccent,
+        color: Colors.black26,
         borderRadius: BorderRadius.all(
           Radius.circular(
             resposive.dp(7),
@@ -123,11 +123,25 @@ class modPublicacion extends StatelessWidget {
               ],
             ),
           ),
-          Row(mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.favorite, color: Colors.white,), ),
-          IconButton(onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const publicacionPerfil())), icon: const Icon(Icons.comment, color: Colors.white,) ),
-          ],)
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.favorite,
+                  color: Colors.white,
+                ),
+              ),
+              IconButton(
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const publicacionPerfil())),
+                  icon: const Icon(
+                    Icons.comment,
+                    color: Colors.white,
+                  )),
+            ],
+          )
         ],
       ),
     );
