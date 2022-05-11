@@ -105,21 +105,21 @@ class _perfilPersonalState extends State<perfilPersonal> {
             ListView(
               padding: EdgeInsets.all(responsive.dp(1.5)),
               children: <Widget>[
-                SizedBox(
+                Container(
                   width: double.infinity,
-                  height: responsive.height,
+                  height: responsive.height * 1.3,
                   //color: Colors.white,
                   child: Stack(
                     //alignment: Alignment.center,
                     children: <Widget>[
                       Positioned(
                         top: pinkSize * 0.25,
-                        left: responsive.wp(8),
+                        left: responsive.wp(23),
                         child: Column(
                           children: <Widget>[
                             IconContainer(
                               //tamaño del icono avatar
-                              size: responsive.wp(20),
+                              size: responsive.wp(25),
                             ),
                             SizedBox(
                               height: responsive.dp(1),
@@ -156,8 +156,10 @@ class _perfilPersonalState extends State<perfilPersonal> {
                                       ),
                                     ),
                                     onPressed: () {
-                                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                      builder: (context) => infopersonal()));
+                                      Navigator.of(context).pushReplacement(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  infopersonal()));
                                     },
                                   ),
                                 ],
