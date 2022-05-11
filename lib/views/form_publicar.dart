@@ -54,7 +54,7 @@ class _formPublicacionState extends State<formPublicacion> {
         ),
         contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Agregar publicacion.",
-        //hintStyle: TextStyle(color: Colors.white),
+        hintStyle: TextStyle(fontSize: responsive.dp(2)),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
@@ -90,11 +90,21 @@ class _formPublicacionState extends State<formPublicacion> {
               Expanded(
                 child: GestureDetector(
                   onTap: () => Navigator.pushNamed(context, "/publicacion"),
-                  child:
-                      publicacionField, /*const InputComent(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white60,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(
+                          responsive.dp(1),
+                        ),
+                      ),
+                    ),
+                    child:
+                        publicacionField, /*const InputComent(
                     keyboardType: TextInputType.text,
                     label: "Agregar publicacion.",
                   ),*/
+                  ),
                 ),
               ),
               IconButton(

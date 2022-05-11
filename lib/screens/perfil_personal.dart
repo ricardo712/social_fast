@@ -142,8 +142,7 @@ class _perfilPersonalState extends State<perfilPersonal> {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => const editarPerfil()));
+                        //? editar perfil
                       },
                     ),
 
@@ -184,8 +183,17 @@ class _perfilPersonalState extends State<perfilPersonal> {
                           ),
                         ),
                         onPressed: () {
+<<<<<<< HEAD
                           Navigator.of(context).pushReplacement(MaterialPageRoute(
                             builder: (context) => infopersonal()));
+=======
+                          Fluttertoast.showToast(
+                            msg: "Ingresando...",
+                            //fontSize: 5,
+                            //gravity: ToastGravity.TOP,
+                          );
+                          InfoPersonal();
+>>>>>>> c059c98b2ab71ec20ca8b67f9c23d8339eab6351
                         },
                       ),
                       SizedBox(
@@ -292,7 +300,7 @@ class _perfilPersonalState extends State<perfilPersonal> {
                 InkWell(
                   onTap: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => infopersonal()));
+                        builder: (context) => InfoPersonal()));
                   },
                   child: Container(
                     padding: const EdgeInsets.all(4),

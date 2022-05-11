@@ -290,7 +290,7 @@ class _perfilCompletoState extends State<perfilCompleto> {
                 InkWell(
                   onTap: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => infopersonal()));
+                        builder: (context) => InfoPersonal()));
                   },
                   child: Container(
                     padding: const EdgeInsets.all(4),
