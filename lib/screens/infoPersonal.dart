@@ -11,14 +11,14 @@ import 'package:social_fast/views/form_publicar.dart';
 import '../utils/responsive.dart';
 import '../widgets/circle.dart';
 
-class infopersonal extends StatefulWidget {
-  infopersonal({Key? key}) : super(key: key);
+class InfoPersonal extends StatefulWidget {
+  InfoPersonal({Key? key}) : super(key: key);
 
   @override
-  State<infopersonal> createState() => _infopersonalState();
+  State<InfoPersonal> createState() => _infopersonalState();
 }
 
-class _infopersonalState extends State<infopersonal> {
+class _infopersonalState extends State<InfoPersonal> {
   final TextEditingController editarinfopersonalController =
       TextEditingController();
   PubModel pubModel = PubModel();
@@ -75,7 +75,11 @@ class _infopersonalState extends State<infopersonal> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) =>  raiz(),));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => raiz(),
+                ));
           },
         ),
       ),

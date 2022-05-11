@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:social_fast/models/pub_model.dart';
 import 'package:social_fast/models/user_model.dart';
+import 'package:social_fast/screens/editarPerfil.dart';
 import 'package:social_fast/screens/login_screen.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:social_fast/utils/responsive.dart';
@@ -141,8 +142,7 @@ class _perfilPersonalState extends State<perfilPersonal> {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => infopersonal()));
+                        //? editar perfil
                       },
                     ),
 
@@ -188,6 +188,7 @@ class _perfilPersonalState extends State<perfilPersonal> {
                             //fontSize: 5,
                             //gravity: ToastGravity.TOP,
                           );
+                          InfoPersonal();
                         },
                       ),
                       SizedBox(
@@ -294,7 +295,7 @@ class _perfilPersonalState extends State<perfilPersonal> {
                 InkWell(
                   onTap: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => infopersonal()));
+                        builder: (context) => InfoPersonal()));
                   },
                   child: Container(
                     padding: const EdgeInsets.all(4),
