@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:social_fast/models/pub_model.dart';
 import 'package:social_fast/models/user_model.dart';
+import 'package:social_fast/screens/editarPerfil.dart';
 import 'package:social_fast/screens/login_screen.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:social_fast/utils/responsive.dart';
@@ -142,7 +143,7 @@ class _perfilPersonalState extends State<perfilPersonal> {
                       ),
                       onPressed: () {
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => infopersonal()));
+                            builder: (context) => const editarPerfil()));
                       },
                     ),
 
@@ -183,11 +184,8 @@ class _perfilPersonalState extends State<perfilPersonal> {
                           ),
                         ),
                         onPressed: () {
-                          Fluttertoast.showToast(
-                            msg: "Ingresando...",
-                            //fontSize: 5,
-                            //gravity: ToastGravity.TOP,
-                          );
+                          Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (context) => infopersonal()));
                         },
                       ),
                       SizedBox(
