@@ -86,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
         suffixIcon: InkWell(
           onTap: _mirarpassword,
           child: (
-            const Icon(Icons.visibility)
+            const Icon(Icons.visibility, color: Colors.pinkAccent,)
           ),
         ),
       ),
@@ -125,8 +125,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Circle(
                     size: pinkSize,
                     colors: const [
-                      Colors.pink,
-                      Colors.pinkAccent,
+                      Colors.orange,
+                      Colors.deepOrangeAccent,
                       //Colors.yellow,
                     ],
                   ),
@@ -137,8 +137,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Circle(
                     size: orangeSize,
                     colors: const [
-                      Colors.orange,
-                      Colors.deepOrangeAccent,
+                      Colors.pink,
+                      Colors.pinkAccent,
                       //Colors.yellow,
                     ],
                   ),
@@ -200,7 +200,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: Text(
                               'aquí',
                               style: TextStyle(
-                                  color: Colors.pinkAccent,
+                                  color: Colors.orangeAccent,
                                   fontWeight: FontWeight.w600,
                                   fontSize: responsive.dp(1.7)),
                             ),

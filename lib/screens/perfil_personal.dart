@@ -141,9 +141,9 @@ class _perfilPersonalState extends State<perfilPersonal> {
                           borderRadius: BorderRadius.circular(50.0),
                         ),
                       ),
-                      onPressed: () {
-                        //? editar perfil
-                      },
+                      onPressed: () => Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => const editarPerfil()))
                     ),
 
                     //const Divider(),
@@ -182,14 +182,9 @@ class _perfilPersonalState extends State<perfilPersonal> {
                             borderRadius: BorderRadius.circular(50.0),
                           ),
                         ),
-                        onPressed: () {
-                          Fluttertoast.showToast(
-                            msg: "Ingresando...",
-                            //fontSize: 5,
-                            //gravity: ToastGravity.TOP,
-                          );
-                          InfoPersonal();
-                        },
+                       onPressed: () => Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => InfoPersonal()))
                       ),
                       SizedBox(
                         width: responsive.wp(1),
