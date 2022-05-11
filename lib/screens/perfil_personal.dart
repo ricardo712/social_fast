@@ -107,7 +107,7 @@ class _perfilPersonalState extends State<perfilPersonal> {
               children: <Widget>[
                 SizedBox(
                   width: double.infinity,
-                  height: responsive.height,
+                  height: responsive.height * 1.2,
                   //color: Colors.white,
                   child: Stack(
                     //alignment: Alignment.center,
