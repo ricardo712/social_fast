@@ -92,7 +92,7 @@ class _raizState extends State<raiz> {
       bottomNavigationBar: CurvedNavigationBar(
           backgroundColor: Colors.white24,
           //buttonBackgroundColor: Colors.black,
-          color: Colors.pink,
+          color: Colors.orange,
           height: resposive.hp(6),
           index: _page,
           items: items,

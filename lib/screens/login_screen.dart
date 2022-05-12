@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -242,7 +244,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   sigIn(String email, String password) async {
     try {
-      await _auth.signInWithEmailAndPassword(email: email, password: password);
+    final result = await  _auth.signInWithEmailAndPassword(email: email, password: password);
+    log(result.user.toString());
       Fluttertoast.showToast(msg: "Inicio Exitoso");
       Navigator.of(context)
           .pushReplacement(MaterialPageRoute(builder: (context) => raiz()));

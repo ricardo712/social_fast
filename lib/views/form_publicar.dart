@@ -62,6 +62,7 @@ class _formPublicacionState extends State<formPublicacion> {
     );
 
     return Container(
+      margin: EdgeInsets.all(8),
       width: double.maxFinite,
       //color: Colors.black38,
       decoration: BoxDecoration(
@@ -110,13 +111,22 @@ class _formPublicacionState extends State<formPublicacion> {
               IconButton(
                 padding: const EdgeInsets.symmetric(vertical: 0),
                 onPressed: () {
+                  if(_image != null){
                   auth.requesUpdateImage(
-                      _image!, publicacionController.text, "");
+                    content: 
+                       publicacionController.text, image:  _image);
+                  
 
-                  Fluttertoast.showToast(
-                      msg: "Agregando publicación. " +
-                          publicacionController.text);
                   publicacionController.text = "";
+                  }else{
+                    auth.requesUpdateImage(content: publicacionController.text);
+                    publicacionController.text = "";
+                  }
+
+                  setState(() {
+                    _image = null;
+                  });
+
                 },
                 icon: const Icon(Icons.send),
               ),

@@ -21,6 +21,7 @@ class _HomeSreenState extends State<HomeSreen> {
   User? user = FirebaseAuth.instance.currentUser;
   UserModel loggedInUser = UserModel();
   PubModel pubmodel = PubModel();
+    final _auth = FirebaseAuth.instance;
 
   @override
   void initState() {
@@ -31,6 +32,7 @@ class _HomeSreenState extends State<HomeSreen> {
         .get()
         .then((value) {
       this.loggedInUser = UserModel.fromMap(value.data());
+      _auth.currentUser!.updateDisplayName("${loggedInUser.name } ${ loggedInUser.lastname}");
       setState(() {});
     });
   }
@@ -49,91 +51,55 @@ class _HomeSreenState extends State<HomeSreen> {
         ),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          width: double.infinity,
-          height: resposive.height * 0.815,
-          color: Colors.white,
-          child: Stack(
-            alignment: Alignment.center,
-            children: <Widget>[
-              Positioned(
-                right: -(pinkSize) * 0.3,
-                top: -(pinkSize) * 0.5,
-                child: Circle(
-                  size: pinkSize,
-                  colors: const [
-                    Colors.pink,
-                    Colors.pinkAccent,
-                    //Colors.yellow,
-                  ],
-                ),
-              ),
+      body: 
+      // SingleChildScrollView(
+      //   child: Container(
+      //     width: double.infinity,
+      //     height: resposive.height * 0.815,
+      //     color: Colors.white,
+      //     child: Stack(
+      //       alignment: Alignment.center,
+      //       children: <Widget>[
+      //         Positioned(
+      //           right: -(pinkSize) * 0.3,
+      //           top: -(pinkSize) * 0.5,
+      //           child: Circle(
+      //             size: pinkSize,
+      //             colors: const [
+      //               Colors.pink,
+      //               Colors.pinkAccent,
+      //               //Colors.yellow,
+      //             ],
+      //           ),
+      //         ),
 
-              Positioned(
-                left: -(orangeSize) * 0.1,
-                top: -(orangeSize) * 0.6,
-                child: Circle(
-                  size: orangeSize,
-                  colors: const [
-                    Colors.orange,
-                    Colors.deepOrangeAccent,
-                    //Colors.yellow,
-                  ],
-                ),
-              ),
+      //         Positioned(
+      //           left: -(orangeSize) * 0.1,
+      //           top: -(orangeSize) * 0.6,
+      //           child: Circle(
+      //             size: orangeSize,
+      //             colors: const [
+      //               Colors.orange,
+      //               Colors.deepOrangeAccent,
+      //               //Colors.yellow,
+      //             ],
+      //           ),
+      //         ),
 
-              // Positioned(
-              //   top: resposive.hp(30),
-              //   child: Text(
-              //     'Bienvenido',
-              //     style: TextStyle(
-              //         fontSize: resposive.dp(4), fontWeight: FontWeight.bold),
-              //   ),
-              // ),
-              // Positioned(
-              //   top: resposive.hp(36),
-              //   child: Text(
-              //     "${loggedInUser.name} ${loggedInUser.lastname}",
-              //     style: const TextStyle(
-              //         color: Colors.black, fontWeight: FontWeight.w500),
-              //   ),
-              // ),
-              // Positioned(
-              //   top: resposive.hp(38.3),
-              //   child: Text(
-              //     "${loggedInUser.email}",
-              //     style: const TextStyle(
-              //         color: Colors.black, fontWeight: FontWeight.w500),
-              //   ),
-              // ),
-              // Positioned(
-              //   top: resposive.hp(41),
-              //   child: ActionChip(
-              //     label: const Text('Salir'),
-              //     onPressed: () {
-              //       salir(context);
-              //     },
-              //   ),
-              // ),
-              ListView(
-                padding: EdgeInsets.all(resposive.dp(1.4)),
-                children: [
+                 Column(
+                   children: [
+                     SizedBox(height: resposive.hp(1)),
                   formPublicacion(altura: 0),
                   SizedBox(height: resposive.hp(1)),
-                  SizedBox(
-                    height: resposive.hp(1),
-                  ),
                   modPublicacion(pubModel: pubmodel),
                   SizedBox(height: resposive.hp(1)),
-                  modPublicacion(pubModel: pubmodel),
-                  SizedBox(height: resposive.hp(1)),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
+                 
+                   ],
+                 )
+      //       ],
+      //     ),
+      //   ),
+      // ),
     );
   }
 
