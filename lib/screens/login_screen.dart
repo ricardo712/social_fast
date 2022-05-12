@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -129,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     colors: const [
                       Colors.orange,
                       Colors.deepOrangeAccent,
-                      //Colors.yellow,
+                      Colors.yellow,
                     ],
                   ),
                 ),
@@ -139,9 +137,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Circle(
                     size: orangeSize,
                     colors: const [
-                      Colors.pink,
-                      Colors.pinkAccent,
-                      //Colors.yellow,
+                      Colors.grey,
+                      Colors.grey,
+                      Color.fromARGB(255, 215, 210, 169),
                     ],
                   ),
                 ),
@@ -244,8 +242,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   sigIn(String email, String password) async {
     try {
-    final result = await  _auth.signInWithEmailAndPassword(email: email, password: password);
-    log(result.user.toString());
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
       Fluttertoast.showToast(msg: "Inicio Exitoso");
       Navigator.of(context)
           .pushReplacement(MaterialPageRoute(builder: (context) => raiz()));
