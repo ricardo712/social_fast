@@ -48,7 +48,7 @@ class _registro_screenState extends State<registro_screen> {
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
         prefixIcon:
-            const Icon(Icons.account_circle_rounded, color: Colors.pinkAccent),
+            const Icon(Icons.account_circle_rounded, color: Colors.orangeAccent),
         contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Nombre",
         border: OutlineInputBorder(
@@ -81,7 +81,7 @@ class _registro_screenState extends State<registro_screen> {
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
         prefixIcon:
-            const Icon(Icons.account_circle_rounded, color: Colors.pinkAccent),
+            const Icon(Icons.account_circle_rounded, color: Colors.orangeAccent),
         contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Apellido",
         border: OutlineInputBorder(
@@ -112,7 +112,7 @@ class _registro_screenState extends State<registro_screen> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        prefixIcon: const Icon(Icons.email_outlined, color: Colors.pinkAccent),
+        prefixIcon: const Icon(Icons.email_outlined, color: Colors.orangeAccent),
         contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Correo",
         border: OutlineInputBorder(
@@ -144,7 +144,7 @@ class _registro_screenState extends State<registro_screen> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        prefixIcon: const Icon(Icons.vpn_key, color: Colors.pinkAccent),
+        prefixIcon: const Icon(Icons.vpn_key, color: Colors.orangeAccent),
         contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "contraseña",
         border: OutlineInputBorder(
@@ -169,7 +169,7 @@ class _registro_screenState extends State<registro_screen> {
       },
       textInputAction: TextInputAction.done,
       decoration: InputDecoration(
-        prefixIcon: const Icon(Icons.vpn_key, color: Colors.pinkAccent),
+        prefixIcon: const Icon(Icons.vpn_key, color: Colors.orangeAccent),
         contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Confirmar contraseña",
         border: OutlineInputBorder(
@@ -197,7 +197,7 @@ class _registro_screenState extends State<registro_screen> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        prefixIcon: const Icon(Icons.phone, color: Colors.pinkAccent),
+        prefixIcon: const Icon(Icons.phone, color: Colors.orangeAccent),
         contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Teléfono",
         border: OutlineInputBorder(
@@ -212,7 +212,7 @@ class _registro_screenState extends State<registro_screen> {
     final registroButton = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(30),
-      color: Colors.pinkAccent,
+      color: Colors.orangeAccent,
       child: MaterialButton(
         padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
@@ -232,7 +232,7 @@ class _registro_screenState extends State<registro_screen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.pinkAccent),
+          icon: const Icon(Icons.arrow_back, color: Colors.orangeAccent),
           onPressed: () {
             Navigator.of(context).pop();
           },

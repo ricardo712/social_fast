@@ -49,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        prefixIcon: const Icon(Icons.email_outlined, color: Colors.pinkAccent),
+        prefixIcon: const Icon(Icons.email_outlined, color: Colors.orange),
         contentPadding: const EdgeInsets.fromLTRB(20, 10, 20, 15),
         hintText: "Email",
         border: OutlineInputBorder(
@@ -77,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
       textInputAction: TextInputAction.done,
       decoration: InputDecoration(
         prefixIcon:
-            const Icon(Icons.lock_clock_outlined, color: Colors.pinkAccent),
+            const Icon(Icons.lock_clock_outlined, color: Colors.orange),
         contentPadding: const EdgeInsets.fromLTRB(20, 10, 20, 15),
         hintText: "Password",
         border: OutlineInputBorder(
@@ -86,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
         suffixIcon: InkWell(
           onTap: _mirarpassword,
           child: (
-            const Icon(Icons.visibility, color: Colors.pinkAccent,)
+            const Icon(Icons.visibility, color: Colors.orange)
           ),
         ),
       ),
@@ -94,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final loginButton = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(30),
-      color: Colors.pinkAccent,
+      color: Colors.orange,
       child: MaterialButton(
         padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
@@ -115,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Container(
             width: responsive.width,
             height: responsive.height,
-            color: Colors.white,
+            color: Colors.white70,
             child: Stack(
               alignment: Alignment.center,
               children: <Widget>[
@@ -137,7 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Circle(
                     size: orangeSize,
                     colors: const [
-                      Colors.grey,
+                      Colors.white,
                       Colors.grey,
                       Color.fromARGB(255, 215, 210, 169),
                     ],

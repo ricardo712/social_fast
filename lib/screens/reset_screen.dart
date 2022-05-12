@@ -22,7 +22,7 @@ class _reset_screenState extends State<reset_screen> {
           child: TextField(
             keyboardType: TextInputType.emailAddress,
             decoration: const InputDecoration(
-            prefixIcon: Icon(Icons.email_outlined, color: Colors.pinkAccent),
+            prefixIcon: Icon(Icons.email_outlined, color: Colors.orange),
             contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
               hintText: ("Email"),
             ),
@@ -43,7 +43,7 @@ class _reset_screenState extends State<reset_screen> {
                   _auth.sendPasswordResetEmail(email: email);
                   Navigator.of(context).pop();
                 },
-                color: Colors.pinkAccent,
+                color: Colors.orange,
                 elevation: 5.0,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0)),
