@@ -259,8 +259,9 @@ class _perfilCompletoState extends State<perfilCompleto> {
               children: [
                 InkWell(
                   onTap: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => const editarPerfil()));
+                    Navigator.pop(context);
+                    // Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    //     builder: (context) => const editarPerfil()));
                   },
                   child: Container(
                     padding: const EdgeInsets.all(4),

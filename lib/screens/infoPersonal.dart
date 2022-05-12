@@ -75,11 +75,12 @@ class _infopersonalState extends State<InfoPersonal> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => raiz(),
-                ));
+            Navigator.pop(context);
+            // Navigator.push(
+            //     context,
+            //     MaterialPageRoute(
+            //       builder: (context) => raiz(),
+            //     ));
           },
         ),
       ),

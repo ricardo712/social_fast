@@ -142,8 +142,8 @@ class _perfilPersonalState extends State<perfilPersonal> {
                         ),
                       ),
                       onPressed: () => Navigator.of(context).push(
-                                MaterialPageRoute(
-                                    builder: (context) => const editarPerfil()))
+                          MaterialPageRoute(
+                              builder: (context) => const editarPerfil())),
                     ),
 
                     //const Divider(),
@@ -170,22 +170,21 @@ class _perfilPersonalState extends State<perfilPersonal> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       TextButton.icon(
-                        icon: const Icon(Icons.edit),
-                        label: Text('Editar informacion.',
-                            textScaleFactor: responsive.dp(0.18)),
-                        style: TextButton.styleFrom(
-                          primary: Colors.white,
-                          padding:
-                              const EdgeInsets.only(left: 12.0, right: 12.0),
-                          backgroundColor: Colors.pink,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50.0),
+                          icon: const Icon(Icons.edit),
+                          label: Text('Editar informacion.',
+                              textScaleFactor: responsive.dp(0.18)),
+                          style: TextButton.styleFrom(
+                            primary: Colors.white,
+                            padding:
+                                const EdgeInsets.only(left: 12.0, right: 12.0),
+                            backgroundColor: Colors.pink,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50.0),
+                            ),
                           ),
-                        ),
-                       onPressed: () => Navigator.of(context).push(
-                                MaterialPageRoute(
-                                    builder: (context) => InfoPersonal()))
-                      ),
+                          onPressed: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => InfoPersonal()))),
                       SizedBox(
                         width: responsive.wp(1),
                       ),
