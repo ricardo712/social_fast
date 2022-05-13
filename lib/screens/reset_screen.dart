@@ -22,6 +22,7 @@ class _reset_screenState extends State<reset_screen> {
     final double orangeSize = responsive.wp(55);
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 33, 76, 93),
           title: const Text(
             "Cambio de contraseña",
             style: TextStyle(color: Colors.white),

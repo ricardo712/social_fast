@@ -80,39 +80,12 @@ class _perfilPersonalState extends State<perfilPersonal> {
         height: responsive.height * 0.82,
         child: Stack(
           children: <Widget>[
-            Positioned(
-              right: -(pinkSize) * 0.3,
-              top: -(pinkSize) * 0.5,
-              child: Circle(
-                size: pinkSize,
-                colors: const [
-                  Colors.pink,
-                  Colors.pinkAccent,
-                  //Colors.yellow,
-                ],
-              ),
-            ),
-            Positioned(
-              left: -(orangeSize) * 0.1,
-              top: -(orangeSize) * 0.6,
-              child: Circle(
-                size: orangeSize,
-                colors: const [
-                  Colors.orange,
-                  Colors.deepOrangeAccent,
-                  //Colors.yellow,
-                ],
-              ),
-            ),
             SingleChildScrollView(
               padding: EdgeInsets.all(responsive.dp(1.5)),
               child: Column(
                 children: <Widget>[
                   Column(
                     children: <Widget>[
-                      SizedBox(
-                        height: responsive.hp(10),
-                      ),
                       IconContainer(
                         //tamaño del icono avatar
                         size: responsive.wp(25),
@@ -139,7 +112,7 @@ class _perfilPersonalState extends State<perfilPersonal> {
                             primary: Colors.white,
                             padding:
                                 const EdgeInsets.only(left: 12.0, right: 12.0),
-                            backgroundColor: Colors.pink,
+                            backgroundColor: const Color.fromARGB(255, 225, 112, 6),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50.0),
                             ),
@@ -152,12 +125,6 @@ class _perfilPersonalState extends State<perfilPersonal> {
                       SizedBox(
                         height: responsive.hp(1),
                       ),
-                      // SizedBox(
-                      //   child: Row(
-                      //     children: [],
-                      //   ),
-                      // ),
-                      //permite crear contenedor
                     ],
                   ),
                   // const Divider(),
@@ -179,7 +146,7 @@ class _perfilPersonalState extends State<perfilPersonal> {
                               primary: Colors.white,
                               padding: const EdgeInsets.only(
                                   left: 12.0, right: 12.0),
-                              backgroundColor: Colors.pink,
+                              backgroundColor: const Color.fromARGB(255, 225, 112, 6),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50.0),
                               ),
@@ -203,7 +170,7 @@ class _perfilPersonalState extends State<perfilPersonal> {
                           },
                           style: TextButton.styleFrom(
                             padding: const EdgeInsets.only(left: 8.0, right: 4),
-                            backgroundColor: Colors.pink,
+                            backgroundColor: const Color.fromARGB(255, 225, 112, 6),
                             primary: Colors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50.0),
@@ -218,7 +185,7 @@ class _perfilPersonalState extends State<perfilPersonal> {
                     "Amigos",
                     textAlign: TextAlign.start,
                     style: TextStyle(
-                      fontSize: responsive.dp(4),
+                      fontSize: responsive.dp(3.5),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -284,7 +251,7 @@ class _perfilPersonalState extends State<perfilPersonal> {
                         ),
                         Icon(
                           Icons.account_box_outlined,
-                          color: Colors.pink,
+                          color:  Color.fromARGB(255, 225, 112, 6),
                         ),
                       ],
                     ),
@@ -314,7 +281,7 @@ class _perfilPersonalState extends State<perfilPersonal> {
                         ),
                         Icon(
                           Icons.edit_note_sharp,
-                          color: Colors.pink,
+                          color: Color.fromARGB(255, 225, 112, 6),
                         ),
                       ],
                     ),
@@ -343,7 +310,7 @@ class _perfilPersonalState extends State<perfilPersonal> {
                         ),
                         Icon(
                           Icons.vertical_align_bottom,
-                          color: Colors.pink,
+                          color: Color.fromARGB(255, 225, 112, 6),
                         ),
                       ],
                     ),

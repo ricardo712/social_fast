@@ -10,6 +10,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:photo_manager/photo_manager.dart';
+import 'package:social_fast/services/uploadImage.dart';
 import 'package:social_fast/ui/widgets.dart';
 import 'package:social_fast/utils/responsive.dart';
 import 'package:image_picker/image_picker.dart';
@@ -29,6 +30,9 @@ class _publicacionPerfilState extends State<publicacionPerfil> {
   final Storage storage = Storage();
   late final bool _success = false;
   late String userMail;
+  UploadImage auth = UploadImage();
+  File? _image;
+  final picker = ImagePicker();
 
   final _keyForm = GlobalKey<FormState>();
   late List<AssetEntity> _mediaList = [];
@@ -89,14 +93,22 @@ class _publicacionPerfilState extends State<publicacionPerfil> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         actions: [
-          Column(
-            children: [
-              SizedBox(
-                height: responsive.hp(6.8),
-                width: responsive.wp(100),
-                child: _appBarPost(context),
+          SizedBox(
+            child: TextButton(
+              style: TextButton.styleFrom(
+                  //padding: const EdgeInsets.fromLTRB(8, 8, 8, 5),
+                  backgroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50.0))),
+              onPressed: () {},
+              child: const TextFrave(
+                text: 'Publicar',
+                color: Colors.orange,
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                letterSpacing: 5,
               ),
-            ],
+            ),
           ),
         ],
       ),
@@ -163,25 +175,25 @@ class _publicacionPerfilState extends State<publicacionPerfil> {
                         //     height: 100,
                         //     child: Image.file(_selecImage),
                         //   ),
-                        /*Padding(
-                          //? reemplazar por la imagen de galeria
-                          padding:
-                              const EdgeInsets.only(left: 65.0, right: 10.0),
-                          child: Container(
+                        _image != null
+                            ? Container(
                             height: 150,
                             width: size.width * .95,
                             margin: const EdgeInsets.only(bottom: 10.0),
                             decoration: BoxDecoration(
                               color: Colors.blue,
                               borderRadius: BorderRadius.circular(10.0),
-                              image: const DecorationImage(
+                              image:  DecorationImage(
                                   fit: BoxFit.cover,
-                                  image: NetworkImage(
-                                      'https://st2.depositphotos.com/1852625/5395/i/600/depositphotos_53954927-stock-photo-beautiful-landscape-of-scottish-nature.jpg') //imagen para mostrar
+                                  image: FileImage(_image!),
                                   ),
                             ),
-                          ), //Text('Linea 140 a 186'),
-                        ),*/
+                            )
+                            : Container(),
+                            
+                        SizedBox(
+                          height: responsive.hp(1),
+                        )
                       ],
                     ),
                   ),
@@ -209,9 +221,9 @@ class _publicacionPerfilState extends State<publicacionPerfil> {
                               top: 3.0,
                               right: 3.0,
                             ),
-                            child: Image.network(
-                              'https://st.depositphotos.com/1003352/2263/i/600/depositphotos_22635647-stock-photo-mountain-lake.jpg',
-                            ),
+                            // child: Image.network(
+                            //   'https://st.depositphotos.com/1003352/2263/i/600/depositphotos_22635647-stock-photo-mountain-lake.jpg',
+                            // ),
                           ),
                           const SizedBox(
                             width: 10,
@@ -225,9 +237,9 @@ class _publicacionPerfilState extends State<publicacionPerfil> {
                               top: 3.0,
                               right: 3.0,
                             ),
-                            child: Image.network(
-                              'https://st.depositphotos.com/1003352/2263/i/600/depositphotos_22635647-stock-photo-mountain-lake.jpg',
-                            ),
+                            // child: Image.network(
+                            //   'https://st.depositphotos.com/1003352/2263/i/600/depositphotos_22635647-stock-photo-mountain-lake.jpg',
+                            // ),
                           ),
                         ],
                       ),
@@ -275,6 +287,7 @@ class _publicacionPerfilState extends State<publicacionPerfil> {
                   width: responsive.wp(47), //linea 266
                   //child: Icon(Icons.add_a_photo),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(
                           splashRadius: 20,
@@ -283,24 +296,17 @@ class _publicacionPerfilState extends State<publicacionPerfil> {
                                 text: 'Permiso para acceder a galeria'));
                             Fluttertoast.showToast(msg: "Abriendo galeria");
                             //? agregar imagen
-                            agrImagen();
+                            _openGallery(context);
                           },
-                          icon: const Icon(Icons.camera)),
+                          icon: const Icon(Icons.photo)),
                       IconButton(
                           splashRadius: 20,
                           onPressed: () async {
                             const Text.rich(TextSpan(
                                 text: 'Permiso para acceder a camara'));
+                                _openCamera(context);
                           },
-                          icon: const Icon(Icons.add_a_photo)),
-                      IconButton(
-                          splashRadius: 20,
-                          onPressed: () {},
-                          icon: const Icon(Icons.gif)),
-                      IconButton(
-                          splashRadius: 20,
-                          onPressed: () {},
-                          icon: const Icon(Icons.location_on)),
+                          icon: const Icon(Icons.camera_alt)),
                     ],
                   ),
                 )
@@ -422,14 +428,6 @@ class _publicacionPerfilState extends State<publicacionPerfil> {
     );
   }
 
-  void _register() async {
-    /*final FirebaseAuth user = (await _auth.createUserWithEmailAndPassword(
-        email: _comentarioController.text,
-        password: _comentarioController.text)) as FirebaseAuth;
-    if (user != null) {
-      //setState
-    } else {}*/
-  }
 
   Widget _appBarPost(BuildContext context) {
     return Row(
@@ -461,5 +459,28 @@ class _publicacionPerfilState extends State<publicacionPerfil> {
         //TextButton(onPressed: () {}, child: const Text('Hola'))
       ],
     );
+  }
+  void _openGallery(BuildContext context) async {
+    final pickedFile = await picker.pickImage(
+        source: ImageSource.gallery, maxHeight: 480, maxWidth: 640);
+    try {
+      setState(() {
+        _image = File(pickedFile!.path);
+      });
+      //Navigator.of(context).pop();
+    } catch (e) {}
+  }
+
+  void _openCamera(BuildContext context) async {
+    final pickedFile = await picker.pickImage(
+        source: ImageSource.camera, maxHeight: 480, maxWidth: 640);
+    try {
+      setState(() {
+        _image = File(pickedFile!.path);
+      });
+      //Navigator.of(context).pop();
+    } catch (e) {
+      print(e);
+    }
   }
 }

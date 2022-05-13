@@ -25,7 +25,7 @@ class modNotificacion extends StatelessWidget {
       width: responsive.wp(94.3),
       height: responsive.hp(11.6),
       decoration: BoxDecoration(
-        color: Colors.black38,
+        color: const Color.fromARGB(255, 255, 255, 255),
         borderRadius: BorderRadius.all(
           Radius.circular(
             responsive.dp(7),

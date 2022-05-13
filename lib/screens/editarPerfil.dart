@@ -29,6 +29,7 @@ class _editarPerfilState extends State<editarPerfil> {
     final double orangeSize = responsive.wp(55);
     final descripPerfil = TextFormField(
       autofocus: false,
+      maxLines: 3,
       controller: descripPerfilController,
       validator: (value) {
         RegExp regex = RegExp(r'^.{6,}$');
@@ -45,7 +46,7 @@ class _editarPerfilState extends State<editarPerfil> {
       },
       textInputAction: TextInputAction.done,
       decoration: InputDecoration(
-        prefixIcon: const Icon(Icons.add_comment, color: Colors.pinkAccent),
+        //prefixIcon: const Icon(Icons.add_comment,size: 30, color: Color.fromARGB(255, 225, 112, 6),),
         contentPadding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
         hintText: "Acerca de mí... ",
         border: OutlineInputBorder(
@@ -56,7 +57,7 @@ class _editarPerfilState extends State<editarPerfil> {
     return Scaffold(
         appBar: AppBar(
           title: const Text("Editar perfil"),
-          backgroundColor: Colors.pink,
+          backgroundColor: Colors.orange,
           elevation: 0,
           leading: IconButton(
             icon: const Icon(Icons.arrow_back, color: Colors.white),
@@ -72,30 +73,6 @@ class _editarPerfilState extends State<editarPerfil> {
                 height: responsive.height,
                 color: Colors.white,
                 child: Stack(alignment: Alignment.topLeft, children: <Widget>[
-                  Positioned(
-                    right: -(pinkSize) * 0.3,
-                    top: -(pinkSize) * 0.5,
-                    child: Circle(
-                      size: pinkSize,
-                      colors: const [
-                        Colors.pink,
-                        Colors.pinkAccent,
-                        //Colors.yellow,
-                      ],
-                    ),
-                  ),
-                  Positioned(
-                    left: -(orangeSize) * 0.1,
-                    top: -(orangeSize) * 0.6,
-                    child: Circle(
-                      size: orangeSize,
-                      colors: const [
-                        Colors.orange,
-                        Colors.deepOrangeAccent,
-                        //Colors.yellow,
-                      ],
-                    ),
-                  ),
                   ListView(
                     children: [
                       Column(
@@ -104,11 +81,12 @@ class _editarPerfilState extends State<editarPerfil> {
                             //width: responsive.width,
                             child: Column(
                               children: [
-                                Row(
-                                  children: [
-                                    Text(
+                                SizedBox(
+                                  height: responsive.wp(20),
+                                ),
+                                Text(
                                       "Foto del perfil ",
-                                      textAlign: TextAlign.left,
+                                      textAlign: TextAlign.center,
                                       style: TextStyle(
                                         color: Colors.black,
                                         fontSize: responsive.dp(3),
@@ -116,26 +94,15 @@ class _editarPerfilState extends State<editarPerfil> {
                                       ),
                                     ),
                                     SizedBox(
+                                      height: responsive.hp(3),
+                                    ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [ 
+                                    SizedBox(
                                       width: responsive.wp(28),
                                     ),
-                                    TextButton.icon(
-                                      icon: const Icon(Icons.add_task),
-                                      label: Text('Editar',
-                                          textScaleFactor: responsive.dp(0.18)),
-                                      style: TextButton.styleFrom(
-                                        primary: Colors.white,
-                                        padding: const EdgeInsets.only(
-                                            left: 7.0, right: 12.0),
-                                        backgroundColor: Colors.pink,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(50.0),
-                                        ),
-                                      ),
-                                      onPressed: () {
-                                        _openGallery(context);
-                                      },
-                                    ),
+                                    
                                   ],
                                 ),
                                 _image != null
@@ -155,25 +122,28 @@ class _editarPerfilState extends State<editarPerfil> {
                                           ),
                                         ),
                                       ),
-                                Column(
+                                       SizedBox(
+                                      height: responsive.hp(2),
+                                    ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     TextButton.icon(
                                       icon: const Icon(Icons.add_task),
-                                      label: Text('Guardar',
+                                      label: Text('Editar',
                                           textScaleFactor: responsive.dp(0.18)),
                                       style: TextButton.styleFrom(
                                         primary: Colors.white,
                                         padding: const EdgeInsets.only(
                                             left: 7.0, right: 12.0),
-                                        backgroundColor: Colors.pink,
+                                        backgroundColor: const Color.fromARGB(255, 225, 112, 6),
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(50.0),
                                         ),
                                       ),
                                       onPressed: () {
-                                        auth.requesUpdateImageProfile(
-                                            image: _image);
+                                        _openGallery(context);
                                       },
                                     ),
                                   ],
@@ -182,6 +152,9 @@ class _editarPerfilState extends State<editarPerfil> {
                             ),
                           ),
                         ],
+                      ),
+                       SizedBox(
+                        height: responsive.hp(3),
                       ),
                       Column(
                         children: <Widget>[
@@ -200,33 +173,37 @@ class _editarPerfilState extends State<editarPerfil> {
                                 SizedBox(
                                   width: responsive.wp(30),
                                 ),
-                                TextButton.icon(
-                                  icon:
-                                      const Icon(Icons.person_add_alt_outlined),
-                                  label: Text('Agregar',
-                                      textScaleFactor: responsive.dp(0.18)),
-                                  style: TextButton.styleFrom(
-                                    primary: Colors.white,
-                                    padding: const EdgeInsets.only(
-                                        left: 7.0, right: 12.0),
-                                    backgroundColor: Colors.pink,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(50.0),
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    Fluttertoast.showToast(
-                                      msg: "Información agregada",
-                                    );
-                                  },
-                                ),
                               ],
                             ),
                           ),
+                           SizedBox(
+                                      height: responsive.hp(2),
+                                    ),
                           SizedBox(
                             width: responsive.wp(90),
-                            height: responsive.hp(20),
-                            child: descripPerfil,
+                            height: responsive.hp(10),
+                            child: descripPerfil, 
+                          ),
+                          SizedBox(
+                                  height: responsive.wp(5),
+                                ),
+                          TextButton.icon(
+                            icon: const Icon(Icons.add_task),
+                            label: Text('Guardar',
+                                textScaleFactor: responsive.dp(0.18)),
+                            style: TextButton.styleFrom(
+                              primary: Colors.white,
+                              padding:
+                                  const EdgeInsets.only(left: 7.0, right: 12.0),
+                              backgroundColor:
+                                  const Color.fromARGB(255, 225, 112, 6),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50.0),
+                              ),
+                            ),
+                            onPressed: () {
+                              auth.requesUpdateImageProfile(image: _image);
+                            },
                           ),
                         ],
                       ),

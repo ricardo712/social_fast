@@ -38,31 +38,6 @@ class _viewPubState extends State<viewPub> {
           child: Stack(
             //alignment: Alignment.center,
             children: <Widget>[
-              Positioned(
-                right: -(pinkSize) * 0.3,
-                top: -(pinkSize) * 0.5,
-                child: Circle(
-                  size: pinkSize,
-                  colors: const [
-                    Colors.pink,
-                    Colors.pinkAccent,
-                    //Colors.yellow,
-                  ],
-                ),
-              ),
-              Positioned(
-                left: -(orangeSize) * 0.1,
-                top: -(orangeSize) * 0.6,
-                child: Circle(
-                  size: orangeSize,
-                  colors: const [
-                    Colors.orange,
-                    Colors.deepOrangeAccent,
-                    //Colors.yellow,
-                  ],
-                ),
-              ),
-
               Column(
                 children: [
                   modPublicacion(

@@ -21,6 +21,7 @@ class InfoPersonal extends StatefulWidget {
 class _infopersonalState extends State<InfoPersonal> {
   final TextEditingController editarinfopersonalController =
       TextEditingController();
+  final TextEditingController pasatiempocontroller = TextEditingController();
   PubModel pubModel = PubModel();
 
   void objeto(PubModel pubModel) {
@@ -59,9 +60,35 @@ class _infopersonalState extends State<InfoPersonal> {
       },
       textInputAction: TextInputAction.done,
       decoration: InputDecoration(
-        prefixIcon: const Icon(Icons.add_comment, color: Colors.pinkAccent),
+        //prefixIcon: const Icon(Icons.add_comment, color: Colors.pinkAccent),
         contentPadding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
         hintText: "Descríbete",
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+      ),
+    );
+    final pasatiempo = TextFormField(
+      autofocus: false,
+      controller: pasatiempocontroller,
+      validator: (value) {
+        RegExp regex = RegExp(r'^.{6,}$');
+        if (value!.isEmpty) {
+          return ("Requiero una información");
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Ingrese información válida, min. 6 caracteres");
+        }
+        return null;
+      },
+      onSaved: (value) {
+        editarinfopersonalController.text = value!;
+      },
+      textInputAction: TextInputAction.done,
+      decoration: InputDecoration(
+        //prefixIcon: const Icon(Icons.add_comment, color: Colors.pinkAccent),
+        contentPadding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+        hintText: "Detalles ",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
@@ -70,7 +97,7 @@ class _infopersonalState extends State<InfoPersonal> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Editar información personal"),
-        backgroundColor: Colors.pink,
+        backgroundColor: const Color.fromARGB(255, 225, 112, 6),
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
@@ -90,31 +117,7 @@ class _infopersonalState extends State<InfoPersonal> {
             width: double.infinity,
             height: resposive.height,
             color: Colors.white,
-            child: Stack(alignment: Alignment.topLeft, children: <Widget>[
-              Positioned(
-                right: -(pinkSize) * 0.3,
-                top: -(pinkSize) * 0.5,
-                child: Circle(
-                  size: pinkSize,
-                  colors: const [
-                    Colors.pink,
-                    Colors.pinkAccent,
-                    //Colors.yellow,
-                  ],
-                ),
-              ),
-              Positioned(
-                left: -(orangeSize) * 0.1,
-                top: -(orangeSize) * 0.6,
-                child: Circle(
-                  size: orangeSize,
-                  colors: const [
-                    Colors.orange,
-                    Colors.deepOrangeAccent,
-                    //Colors.yellow,
-                  ],
-                ),
-              ),
+            child: Column( children: <Widget>[
               Positioned(
                 top: pinkSize * 0.100,
                 child: Column(
@@ -122,6 +125,10 @@ class _infopersonalState extends State<InfoPersonal> {
                     SizedBox(
                       child: Row(
                         children: [
+                          SizedBox(
+                            width: resposive.wp(5),
+                            height: resposive.hp(10),
+                          ),
                           Text(
                             "Presentación ",
                             textAlign: TextAlign.left,
@@ -130,28 +137,6 @@ class _infopersonalState extends State<InfoPersonal> {
                               fontSize: resposive.dp(3),
                               fontWeight: FontWeight.bold,
                             ),
-                          ),
-                          SizedBox(
-                            width: resposive.wp(30),
-                          ),
-                          TextButton.icon(
-                            icon: const Icon(Icons.person_add_alt_outlined),
-                            label: Text('Agregar',
-                                textScaleFactor: resposive.dp(0.18)),
-                            style: TextButton.styleFrom(
-                              primary: Colors.white,
-                              padding:
-                                  const EdgeInsets.only(left: 7.0, right: 12.0),
-                              backgroundColor: Colors.pink,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50.0),
-                              ),
-                            ),
-                            onPressed: () {
-                              Fluttertoast.showToast(
-                                msg: "Información agregada",
-                              );
-                            },
                           ),
                         ],
                       ),
@@ -170,6 +155,9 @@ class _infopersonalState extends State<InfoPersonal> {
                   SizedBox(
                     child: Row(
                       children: [
+                        SizedBox(
+                            width: resposive.wp(5),
+                          ),
                         Text(
                           "Detalles ",
                           textAlign: TextAlign.left,
@@ -180,7 +168,7 @@ class _infopersonalState extends State<InfoPersonal> {
                           ),
                         ),
                         SizedBox(
-                          width: resposive.wp(50),
+                          width: resposive.wp(40),
                         ),
                         TextButton.icon(
                           icon: const Icon(Icons.edit_attributes),
@@ -190,7 +178,8 @@ class _infopersonalState extends State<InfoPersonal> {
                             primary: Colors.white,
                             padding:
                                 const EdgeInsets.only(left: 7.0, right: 12.0),
-                            backgroundColor: Colors.pink,
+                            backgroundColor:
+                                const Color.fromARGB(255, 225, 112, 6),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50.0),
                             ),
@@ -213,6 +202,10 @@ class _infopersonalState extends State<InfoPersonal> {
                   SizedBox(
                     child: Row(
                       children: [
+                        SizedBox(
+                            width: resposive.wp(5),
+                            height: resposive.hp(10),
+                          ),
                         Text(
                           "Pasatiempos ",
                           textAlign: TextAlign.left,
@@ -222,64 +215,34 @@ class _infopersonalState extends State<InfoPersonal> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(
-                          width: resposive.wp(36),
-                        ),
-                        TextButton.icon(
-                          icon: const Icon(Icons.add_task),
-                          label: Text('Editar',
-                              textScaleFactor: resposive.dp(0.18)),
-                          style: TextButton.styleFrom(
-                            primary: Colors.white,
-                            padding:
-                                const EdgeInsets.only(left: 7.0, right: 12.0),
-                            backgroundColor: Colors.pink,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50.0),
-                            ),
-                          ),
-                          onPressed: () {},
-                        ),
                       ],
                     ),
                   ),
-                ]),
-              ),
-              Positioned(
-                top: resposive.hp(60),
-                child: Column(children: <Widget>[
                   SizedBox(
-                    child: Row(
-                      children: [
-                        Text(
-                          "Destacados ",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: resposive.dp(3),
-                            fontWeight: FontWeight.bold,
+                    width: resposive.wp(90),
+                    height: resposive.hp(10),
+                    child: pasatiempo,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextButton.icon(
+                        icon: const Icon(Icons.add_task),
+                        label: Text('Guardar',
+                            textScaleFactor: resposive.dp(0.18)),
+                        style: TextButton.styleFrom(
+                          primary: Colors.white,
+                          padding:
+                              const EdgeInsets.only(left: 7.0, right: 12.0),
+                          backgroundColor:
+                              const Color.fromARGB(255, 225, 112, 6),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50.0),
                           ),
                         ),
-                        SizedBox(
-                          width: resposive.wp(35),
-                        ),
-                        TextButton.icon(
-                          icon: const Icon(Icons.add_a_photo),
-                          label: Text('Agregar',
-                              textScaleFactor: resposive.dp(0.18)),
-                          style: TextButton.styleFrom(
-                            primary: Colors.white,
-                            padding:
-                                const EdgeInsets.only(left: 7.0, right: 12.0),
-                            backgroundColor: Colors.pink,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50.0),
-                            ),
-                          ),
-                          onPressed: () {},
-                        ),
-                      ],
-                    ),
+                        onPressed: () {},
+                      ),
+                    ],
                   ),
                 ]),
               ),

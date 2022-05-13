@@ -17,6 +17,7 @@ class registro_screen extends StatefulWidget {
 }
 
 class _registro_screenState extends State<registro_screen> {
+  
   final _auth = FirebaseAuth.instance;
   final _formKey = GlobalKey<FormState>();
 
@@ -26,6 +27,8 @@ class _registro_screenState extends State<registro_screen> {
   final passwordEditingController = TextEditingController();
   final confPasswordEditingController = TextEditingController();
   final telEditingController = TextEditingController();
+  bool mostrarpassword = true;
+  bool mostrarConfpassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +137,7 @@ class _registro_screenState extends State<registro_screen> {
     final passwordField = TextFormField(
       autofocus: false,
       controller: passwordEditingController,
-      obscureText: true,
+      obscureText: mostrarpassword,
       validator: (value) {
         RegExp regex = RegExp(r'^.{6,}$');
         if (value!.isEmpty) {
@@ -156,13 +159,17 @@ class _registro_screenState extends State<registro_screen> {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
+       suffixIcon: InkWell(
+          onTap: _mirarpassword,
+          child: (const Icon(Icons.visibility, color: Colors.grey)),
+        ),
       ),
     );
     //confirmar contraseña
     final confpasswordField = TextFormField(
       autofocus: false,
       controller: confPasswordEditingController,
-      obscureText: true,
+      obscureText: mostrarConfpassword,
       validator: (value) {
         if (confPasswordEditingController.text !=
             passwordEditingController.text) {
@@ -180,6 +187,10 @@ class _registro_screenState extends State<registro_screen> {
         hintText: "Confirmar contraseña",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
+        ),
+        suffixIcon: InkWell(
+          onTap: _mirarconfpassword,
+          child: (const Icon(Icons.visibility, color: Colors.grey)),
         ),
       ),
     );
@@ -249,7 +260,7 @@ class _registro_screenState extends State<registro_screen> {
         child: SingleChildScrollView(
           child: Container(
             width: responsive.width,
-            height: responsive.height * 0.71,
+            height: responsive.height * 0.90,
             color: Colors.white70,
             child: Stack(
               alignment: Alignment.center,
@@ -297,27 +308,27 @@ class _registro_screenState extends State<registro_screen> {
                           // const Text("Registro", style: TextStyle(color: Colors.pinkAccent, fontSize: 5+40)),
                           const SizedBox(height: 20),
                           SizedBox(
-                              height: responsive.hp(7),
+                              height: responsive.hp(8),
                               width: responsive.wp(85),
                               child: nameField),
                           SizedBox(
-                              height: responsive.hp(7),
+                              height: responsive.hp(8),
                               width: responsive.wp(85),
                               child: lastnameField),
                           SizedBox(
-                              height: responsive.hp(7),
+                              height: responsive.hp(8),
                               width: responsive.wp(85),
                               child: emailField),
                           SizedBox(
-                              height: responsive.hp(7),
+                              height: responsive.hp(8),
                               width: responsive.wp(85),
                               child: telField),
                           SizedBox(
-                              height: responsive.hp(7),
+                              height: responsive.hp(8),
                               width: responsive.wp(85),
                               child: passwordField),
                           SizedBox(
-                              height: responsive.hp(7),
+                              height: responsive.hp(8),
                               width: responsive.wp(85),
                               child: confpasswordField),
                           SizedBox(
@@ -374,5 +385,21 @@ class _registro_screenState extends State<registro_screen> {
 
     Navigator.pushAndRemoveUntil(context,
         MaterialPageRoute(builder: (context) => raiz()), (route) => false);
+  }
+  void _mirarpassword() {
+    if (mostrarpassword == true) {
+      mostrarpassword = false;
+    } else {
+      mostrarpassword = true;
+    }
+    setState(() {});
+  }
+  void _mirarconfpassword() {
+    if (mostrarConfpassword == true) {
+      mostrarConfpassword = false;
+    } else {
+      mostrarConfpassword = true;
+    }
+    setState(() {});
   }
 }

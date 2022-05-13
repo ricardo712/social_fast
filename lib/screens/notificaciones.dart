@@ -67,30 +67,6 @@ class _NotificacionesState extends State<Notificaciones> {
             child: Stack(
               //alignment: Alignment.center,
               children: <Widget>[
-                Positioned(
-                  right: -(pinkSize) * 0.3,
-                  top: -(pinkSize) * 0.5,
-                  child: Circle(
-                    size: pinkSize,
-                    colors: const [
-                      Colors.pink,
-                      Colors.pinkAccent,
-                      //Colors.yellow,
-                    ],
-                  ),
-                ),
-                Positioned(
-                  left: -(orangeSize) * 0.1,
-                  top: -(orangeSize) * 0.6,
-                  child: Circle(
-                    size: orangeSize,
-                    colors: const [
-                      Colors.orange,
-                      Colors.deepOrangeAccent,
-                      //Colors.yellow,
-                    ],
-                  ),
-                ),
                 ListView(
                   padding: EdgeInsets.all(responsive.dp(1.5)),
                   children: <Widget>[
@@ -100,10 +76,10 @@ class _NotificacionesState extends State<Notificaciones> {
                       width: responsive.wp(94.3),
                       //height: responsive.hp(85),
                       decoration: BoxDecoration(
-                        color: Colors.white38,
+                        color: const Color.fromARGB(43, 0, 0, 0),
                         borderRadius: BorderRadius.all(
                           Radius.circular(
-                            responsive.dp(7),
+                            responsive.dp(3),
                           ),
                         ),
                       ),
