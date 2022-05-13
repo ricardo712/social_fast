@@ -66,9 +66,9 @@ class _reset_screenState extends State<reset_screen> {
                       child: TextField(
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.email_outlined,
+                            prefixIcon: const Icon(Icons.email_outlined,
                                 color: Colors.orange),
-                            contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                            contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
                             hintText: ("Email"),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10.0))),

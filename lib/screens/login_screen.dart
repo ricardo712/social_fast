@@ -91,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final loginButton = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(30),
-      color: Color.fromARGB(255, 225, 112, 6),
+      color: const Color.fromARGB(255, 225, 112, 6),
       child: MaterialButton(
         padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,

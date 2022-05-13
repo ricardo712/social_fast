@@ -59,11 +59,11 @@ class _formPublicacionState extends State<formPublicacion> {
     );
 
     return Container(
-      margin: EdgeInsets.all(8),
+      margin: const EdgeInsets.all(8),
       width: double.maxFinite,
       //color: Colors.black38,
       decoration: BoxDecoration(
-        color: Color.fromARGB(43, 0, 0, 0),
+        color: const Color.fromARGB(43, 0, 0, 0),
         borderRadius: BorderRadius.all(
           Radius.circular(
             responsive.dp(1),
