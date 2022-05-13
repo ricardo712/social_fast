@@ -19,7 +19,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  bool mostrarpassword= true;
+  bool mostrarpassword = true;
 
   final _auth = FirebaseAuth.instance;
 
@@ -76,8 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       textInputAction: TextInputAction.done,
       decoration: InputDecoration(
-        prefixIcon:
-            const Icon(Icons.lock_clock_outlined, color: Colors.orange),
+        prefixIcon: const Icon(Icons.lock_clock_outlined, color: Colors.orange),
         contentPadding: const EdgeInsets.fromLTRB(20, 10, 20, 15),
         hintText: "Password",
         border: OutlineInputBorder(
@@ -85,16 +84,14 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         suffixIcon: InkWell(
           onTap: _mirarpassword,
-          child: (
-            const Icon(Icons.visibility, color: Colors.orange)
-          ),
+          child: (const Icon(Icons.visibility, color: Colors.orange)),
         ),
       ),
     );
     final loginButton = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(30),
-      color: Colors.orange,
+      color: Color.fromARGB(255, 225, 112, 6),
       child: MaterialButton(
         padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
@@ -120,26 +117,24 @@ class _LoginScreenState extends State<LoginScreen> {
               alignment: Alignment.center,
               children: <Widget>[
                 Positioned(
-                  top: -pinkSize * 0.5,
-                  right: -pinkSize * 0.3,
-                  child: Circle(
-                    size: pinkSize,
-                    colors: const [
-                      Colors.orange,
-                      Colors.deepOrangeAccent,
-                      Colors.yellow,
-                    ],
-                  ),
-                ),
-                Positioned(
                   left: -orangeSize * 0.1,
                   top: -orangeSize * 0.6,
                   child: Circle(
                     size: orangeSize,
                     colors: const [
-                      Colors.white,
-                      Colors.grey,
-                      Color.fromARGB(255, 215, 210, 169),
+                      Color.fromARGB(255, 33, 76, 93),
+                      Color.fromARGB(255, 33, 76, 93),
+                    ],
+                  ),
+                ),
+                Positioned(
+                  top: -pinkSize * 0.5,
+                  right: -pinkSize * 0.3,
+                  child: Circle(
+                    size: pinkSize,
+                    colors: const [
+                      Colors.amber,
+                      Color.fromARGB(255, 225, 112, 6),
                     ],
                   ),
                 ),
@@ -231,10 +226,11 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-  void _mirarpassword(){
-    if (mostrarpassword == true){
+
+  void _mirarpassword() {
+    if (mostrarpassword == true) {
       mostrarpassword = false;
-    }else{
+    } else {
       mostrarpassword = true;
     }
     setState(() {});

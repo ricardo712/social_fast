@@ -61,30 +61,30 @@ class buscarUser extends StatelessWidget {
         height: responsive.height * 0.815,
         child: Stack(
           children: <Widget>[
-            Positioned(
-              right: -(pinkSize) * 0.3,
-              top: -(pinkSize) * 0.5,
-              child: Circle(
-                size: pinkSize,
-                colors: const [
-                  Colors.pink,
-                  Colors.pinkAccent,
-                  //Colors.yellow,
-                ],
-              ),
-            ),
-            Positioned(
-              left: -(orangeSize) * 0.1,
-              top: -(orangeSize) * 0.6,
-              child: Circle(
-                size: orangeSize,
-                colors: const [
-                  Colors.orange,
-                  Colors.deepOrangeAccent,
-                  //Colors.yellow,
-                ],
-              ),
-            ),
+            // Positioned(
+            //   right: -(pinkSize) * 0.3,
+            //   top: -(pinkSize) * 0.5,
+            //   child: Circle(
+            //     size: pinkSize,
+            //     colors: const [
+            //       Colors.pink,
+            //       Colors.pinkAccent,
+            //       //Colors.yellow,
+            //     ],
+            //   ),
+            // ),
+            // Positioned(
+            //   left: -(orangeSize) * 0.1,
+            //   top: -(orangeSize) * 0.6,
+            //   child: Circle(
+            //     size: orangeSize,
+            //     colors: const [
+            //       Colors.orange,
+            //       Colors.deepOrangeAccent,
+            //       //Colors.yellow,
+            //     ],
+            //   ),
+            // ),
             ListView(
               padding: EdgeInsets.all(responsive.dp(1.5)),
               children: <Widget>[
@@ -98,24 +98,24 @@ class buscarUser extends StatelessWidget {
                           horizontal: responsive.dp(1)),
                       child: Row(
                         children: [
-                          Column(
-                            children: [
-                              Container(
-                                alignment: Alignment.topLeft,
-                                height: responsive.hp(7),
-                                //color: Colors.amber,
-                                width: responsive.wp(16), //size.width * .125,
-                                child: const CircleAvatar(
-                                  radius: 60,
-                                  backgroundImage:
-                                      AssetImage('assets/img/pru1.jpeg'),
-                                ),
-                              ),
-                            ],
-                          ),
+                          // Column(
+                          //   children: [
+                          //     Container(
+                          //       alignment: Alignment.topLeft,
+                          //       height: responsive.hp(7),
+                          //       //color: Colors.amber,
+                          //       width: responsive.wp(16), //size.width * .125,
+                          //       child: const CircleAvatar(
+                          //         radius: 60,
+                          //         backgroundImage:
+                          //             AssetImage('assets/img/pru1.jpeg'),
+                          //       ),
+                          //     ),
+                          //   ],
+                          // ),
                           SizedBox(
                             height: responsive.hp(7),
-                            width: responsive.wp(72.5),
+                            width: responsive.wp(88),
                             //color: Colors.grey.shade300, //parte de perfil
                             child: TextFormField(
                               style: TextStyle(fontSize: responsive.dp(2.2)),
@@ -165,15 +165,17 @@ class buscarUser extends StatelessWidget {
                 ),
                 //?
                 Container(
-                  width: responsive.wp(98),
+                  width: responsive.wp(95),
                   height: responsive.hp(65),
                   //color: Colors.black12,
                   decoration: BoxDecoration(
                       color: Colors.black12,
                       borderRadius:
-                          BorderRadius.all(Radius.circular(responsive.dp(2)))),
+                          BorderRadius.all(Radius.circular(responsive.dp(1)))),
                   child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: responsive.dp(1)),
+                    padding: EdgeInsets.symmetric(
+                        vertical: responsive.dp(1),
+                        horizontal: responsive.wp(1)),
                     child: Column(
                       children: [
                         //userResult,

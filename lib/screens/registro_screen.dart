@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:social_fast/screens/home_screen.dart';
 import 'package:social_fast/screens/raiz.dart';
+import 'package:social_fast/utils/responsive.dart';
+import 'package:social_fast/widgets/circle.dart';
 
 import '../models/user_model.dart';
 
@@ -27,6 +29,9 @@ class _registro_screenState extends State<registro_screen> {
 
   @override
   Widget build(BuildContext context) {
+    Responsive responsive = Responsive(context);
+    final double pinkSize = responsive.wp(90);
+    final double orangeSize = responsive.wp(55);
     //nombre
     final nameField = TextFormField(
       autofocus: false,
@@ -47,8 +52,8 @@ class _registro_screenState extends State<registro_screen> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        prefixIcon:
-            const Icon(Icons.account_circle_rounded, color: Colors.orangeAccent),
+        prefixIcon: const Icon(Icons.account_circle_rounded,
+            color: Colors.orangeAccent),
         contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Nombre",
         border: OutlineInputBorder(
@@ -80,8 +85,8 @@ class _registro_screenState extends State<registro_screen> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        prefixIcon:
-            const Icon(Icons.account_circle_rounded, color: Colors.orangeAccent),
+        prefixIcon: const Icon(Icons.account_circle_rounded,
+            color: Colors.orangeAccent),
         contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Apellido",
         border: OutlineInputBorder(
@@ -112,7 +117,8 @@ class _registro_screenState extends State<registro_screen> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        prefixIcon: const Icon(Icons.email_outlined, color: Colors.orangeAccent),
+        prefixIcon:
+            const Icon(Icons.email_outlined, color: Colors.orangeAccent),
         contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Correo",
         border: OutlineInputBorder(
@@ -229,55 +235,105 @@ class _registro_screenState extends State<registro_screen> {
     );
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.black54,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.orangeAccent),
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
             Navigator.of(context).pop();
           },
         ),
       ),
       backgroundColor: Colors.white,
-      body: Center(
-          child: SingleChildScrollView(
-              child: Container(
-        color: Colors.transparent,
-        child: Padding(
-          padding: const EdgeInsets.all(36.0),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Container(
+            width: responsive.width,
+            height: responsive.height * 0.71,
+            color: Colors.white70,
+            child: Stack(
+              alignment: Alignment.center,
               children: <Widget>[
-                const SizedBox(
-                  height: 90,
-                  child: CircleAvatar(
-                      radius: 40.0,
-                      backgroundImage: AssetImage('assets/images/a.jpg')),
+                Positioned(
+                  left: -orangeSize * 0.1,
+                  top: -orangeSize * 0.6,
+                  child: Circle(
+                    size: orangeSize,
+                    colors: const [
+                      Color.fromARGB(255, 33, 76, 93),
+                      Color.fromARGB(255, 33, 76, 93),
+                    ],
+                  ),
                 ),
-                // const Text("Registro", style: TextStyle(color: Colors.pinkAccent, fontSize: 5+40)),
-                const SizedBox(height: 20),
-                nameField,
-                const SizedBox(height: 20),
-                lastnameField,
-                const SizedBox(height: 20),
-                emailField,
-                const SizedBox(height: 20),
-                telField,
-                const SizedBox(height: 20),
-                passwordField,
-                const SizedBox(height: 20),
-                confpasswordField,
-                const SizedBox(height: 20),
-                registroButton,
-                const SizedBox(height: 15),
+                Positioned(
+                  top: -pinkSize * 0.5,
+                  right: -pinkSize * 0.3,
+                  child: Circle(
+                    size: pinkSize,
+                    colors: const [
+                      Colors.amber,
+                      Color.fromARGB(255, 225, 112, 6),
+                    ],
+                  ),
+                ),
+                Column(
+                  children: <Widget>[
+                    Form(
+                      key: _formKey,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          SizedBox(
+                            height: responsive.hp(6),
+                          ),
+                          const SizedBox(
+                            height: 90,
+                            child: CircleAvatar(
+                                radius: 40.0,
+                                backgroundImage:
+                                    AssetImage('assets/images/a.jpg')),
+                          ),
+                          // const Text("Registro", style: TextStyle(color: Colors.pinkAccent, fontSize: 5+40)),
+                          const SizedBox(height: 20),
+                          SizedBox(
+                              height: responsive.hp(7),
+                              width: responsive.wp(85),
+                              child: nameField),
+                          SizedBox(
+                              height: responsive.hp(7),
+                              width: responsive.wp(85),
+                              child: lastnameField),
+                          SizedBox(
+                              height: responsive.hp(7),
+                              width: responsive.wp(85),
+                              child: emailField),
+                          SizedBox(
+                              height: responsive.hp(7),
+                              width: responsive.wp(85),
+                              child: telField),
+                          SizedBox(
+                              height: responsive.hp(7),
+                              width: responsive.wp(85),
+                              child: passwordField),
+                          SizedBox(
+                              height: responsive.hp(7),
+                              width: responsive.wp(85),
+                              child: confpasswordField),
+                          SizedBox(
+                              height: responsive.hp(7),
+                              width: responsive.wp(45),
+                              child: registroButton),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
         ),
-      ))),
+      ),
     );
   }
 

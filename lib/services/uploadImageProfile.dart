@@ -5,29 +5,31 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:social_fast/models/post.model.dart';
+import 'package:social_fast/models/userModelProfile.dart';
 
-class UploadImage {
+class UploadImageProfile {
   FirebaseStorage storag = FirebaseStorage.instance;
   FirebaseFirestore db = FirebaseFirestore.instance;
   User? user = FirebaseAuth.instance.currentUser;
 
-  Future<void> requesUpdateImage({String? content, File? image}) async {
+  Future<void> requesUpdateImageProfile({File? image}) async {
     log(user!.displayName!);
     final date = DateTime.now().millisecondsSinceEpoch;
     try {
       if (image != null) {
         var nameImage = image.hashCode;
-        final path = "/images/post/${user!.uid}/$nameImage.png";
+        final path = "/images/profile/${user!.uid}/$nameImage.png";
         final storageReference = storag.ref().child(path);
         UploadTask uploadTask = storageReference.putFile(image);
         await uploadTask.then((e) => log(e.toString()));
         await storageReference.getDownloadURL().then((fileURL) async {
-          final resp = await db.collection("post").add({
+          final resp = await db.collection("userProfile").add({
             "image": fileURL,
-            "content": content,
+            "vive": "-",
             "userUid": user!.uid,
             "date": date,
+            "lugar": "-",
+            "relacion": "-",
             "name": user!.displayName!
           });
 
@@ -37,11 +39,13 @@ class UploadImage {
           //guardar en base de datos
         });
       } else {
-        final resp = await db.collection("post").add({
+        final resp = await db.collection("userProfile").add({
           "image": "",
-          "content": content,
+          "vive": "-",
           "userUid": user!.uid,
           "date": date,
+          "lugar": "-",
+          "relacion": "-",
           "name": user!.displayName!
         });
 
@@ -56,14 +60,14 @@ class UploadImage {
     // }
   }
 
-  Stream<List<PostModel>> getPosts() {
-    final _firestore = db.collection("post");
+  Stream<List<UserModelProfile>> getPosts() {
+    final _firestore = db.collection("userProfile");
     return _firestore
         .orderBy("date", descending: true)
         .snapshots()
         .map((snapshot) {
       return snapshot.docs
-          .map((doc) => PostModel.fromJson(doc.data()))
+          .map((doc) => UserModelProfile.fromJson(doc.data()))
           .toList();
     });
   }

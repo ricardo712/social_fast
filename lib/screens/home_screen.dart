@@ -21,7 +21,7 @@ class _HomeSreenState extends State<HomeSreen> {
   User? user = FirebaseAuth.instance.currentUser;
   UserModel loggedInUser = UserModel();
   PubModel pubmodel = PubModel();
-    final _auth = FirebaseAuth.instance;
+  final _auth = FirebaseAuth.instance;
 
   @override
   void initState() {
@@ -32,74 +32,48 @@ class _HomeSreenState extends State<HomeSreen> {
         .get()
         .then((value) {
       this.loggedInUser = UserModel.fromMap(value.data());
-      _auth.currentUser!.updateDisplayName("${loggedInUser.name } ${ loggedInUser.lastname}");
+      _auth.currentUser!
+          .updateDisplayName("${loggedInUser.name} ${loggedInUser.lastname}");
       setState(() {});
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    Responsive resposive = Responsive(context);
-    final double pinkSize = resposive.wp(90);
-    final double orangeSize = resposive.wp(55);
+    Responsive responsive = Responsive(context);
+    final double pinkSize = responsive.wp(90);
+    final double orangeSize = responsive.wp(55);
     objeto(pubmodel);
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Social App',
-          style: TextStyle(fontSize: resposive.dp(3)),
+          'Publicaciones',
+          style: TextStyle(fontSize: responsive.dp(3), color: Colors.white),
         ),
         centerTitle: true,
       ),
-      body: 
-      // SingleChildScrollView(
-      //   child: Container(
-      //     width: double.infinity,
-      //     height: resposive.height * 0.815,
-      //     color: Colors.white,
-      //     child: Stack(
-      //       alignment: Alignment.center,
-      //       children: <Widget>[
-      //         Positioned(
-      //           right: -(pinkSize) * 0.3,
-      //           top: -(pinkSize) * 0.5,
-      //           child: Circle(
-      //             size: pinkSize,
-      //             colors: const [
-      //               Colors.pink,
-      //               Colors.pinkAccent,
-      //               //Colors.yellow,
-      //             ],
-      //           ),
-      //         ),
-
-      //         Positioned(
-      //           left: -(orangeSize) * 0.1,
-      //           top: -(orangeSize) * 0.6,
-      //           child: Circle(
-      //             size: orangeSize,
-      //             colors: const [
-      //               Colors.orange,
-      //               Colors.deepOrangeAccent,
-      //               //Colors.yellow,
-      //             ],
-      //           ),
-      //         ),
-
-                 Column(
-                   children: [
-                     SizedBox(height: resposive.hp(1)),
+      body: SingleChildScrollView(
+        child: Container(
+          width: double.infinity,
+          height: responsive.height * 0.82,
+          color: Colors.white,
+          child: Stack(
+            //alignment: Alignment.center,
+            children: <Widget>[
+              Column(
+                children: [
                   formPublicacion(altura: 0),
-                  SizedBox(height: resposive.hp(1)),
-                  modPublicacion(pubModel: pubmodel),
-                  SizedBox(height: resposive.hp(1)),
-                 
-                   ],
-                 )
-      //       ],
-      //     ),
-      //   ),
-      // ),
+                  modPublicacion(
+                    pubModel: pubmodel,
+                  ),
+                ],
+              ),
+
+              //?
+            ],
+          ),
+        ),
+      ),
     );
   }
 

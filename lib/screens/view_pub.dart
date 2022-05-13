@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:social_fast/models/pub_model.dart';
 import 'package:social_fast/utils/responsive.dart';
+import 'package:social_fast/views/form_publicar.dart';
 import 'package:social_fast/widgets/circle.dart';
 import 'package:social_fast/widgets/mod_publicacion.dart';
 
@@ -25,7 +26,7 @@ class _viewPubState extends State<viewPub> {
       appBar: AppBar(
         title: Text(
           'Publicaciones',
-          style: TextStyle(fontSize: responsive.dp(3)),
+          style: TextStyle(fontSize: responsive.dp(3), color: Colors.white),
         ),
         centerTitle: true,
       ),
@@ -62,20 +63,14 @@ class _viewPubState extends State<viewPub> {
                 ),
               ),
 
-              ListView(
-                padding: EdgeInsets.all(responsive.dp(1.5)),
-                children: <Widget>[
-                  modPublicacion(
-                    pubModel: pubModel,
-                  ),
-                  SizedBox(
-                    height: responsive.hp(1),
-                  ),
+              Column(
+                children: [
                   modPublicacion(
                     pubModel: pubModel,
                   ),
                 ],
-              )
+              ),
+
               //?
             ],
           ),

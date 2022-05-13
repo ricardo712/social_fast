@@ -1,17 +1,14 @@
 import 'dart:ffi';
 import 'dart:io';
 
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:social_fast/services/storage_service.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:social_fast/services/uploadImage.dart';
 import 'package:social_fast/utils/responsive.dart';
-import 'package:dio/dio.dart';
-//import 'package:image_picker/image_picker.dart';
 
-import 'package:social_fast/widgets/input_comen.dart';
+//import 'package:image_picker/image_picker.dart';
 
 class formPublicacion extends StatefulWidget {
   double altura;
@@ -66,10 +63,10 @@ class _formPublicacionState extends State<formPublicacion> {
       width: double.maxFinite,
       //color: Colors.black38,
       decoration: BoxDecoration(
-        color: Colors.black26,
+        color: Color.fromARGB(43, 0, 0, 0),
         borderRadius: BorderRadius.all(
           Radius.circular(
-            responsive.dp(3.5),
+            responsive.dp(1),
           ),
         ),
       ),
@@ -100,33 +97,33 @@ class _formPublicacionState extends State<formPublicacion> {
                         ),
                       ),
                     ),
-                    child:
-                        publicacionField, /*const InputComent(
-                    keyboardType: TextInputType.text,
-                    label: "Agregar publicacion.",
-                  ),*/
+                    child: publicacionField,
                   ),
                 ),
               ),
               IconButton(
                 padding: const EdgeInsets.symmetric(vertical: 0),
                 onPressed: () {
-                  if(_image != null){
-                  auth.requesUpdateImage(
-                    content: 
-                       publicacionController.text, image:  _image);
-                  
+                  if (_image != null) {
+                    auth.requesUpdateImage(
+                        content: publicacionController.text, image: _image);
 
-                  publicacionController.text = "";
-                  }else{
-                    auth.requesUpdateImage(content: publicacionController.text);
                     publicacionController.text = "";
+                  } else {
+                    if (publicacionController.text != null &&
+                        publicacionController.text != "") {
+                      auth.requesUpdateImage(
+                          content: publicacionController.text);
+                      publicacionController.text = "";
+                    } else {
+                      Fluttertoast.showToast(
+                          msg: "La publicacion no puede estar vacia");
+                    }
                   }
 
                   setState(() {
                     _image = null;
                   });
-
                 },
                 icon: const Icon(Icons.send),
               ),
@@ -141,33 +138,8 @@ class _formPublicacionState extends State<formPublicacion> {
                     Fluttertoast.showToast(msg: "Abriendo galeria");
 
                     _openGallery(context);
-
-                    // final results = await FilePicker.platform.pickFiles(
-                    //   allowMultiple: false,
-                    //   type: FileType.custom,
-                    //   allowedExtensions: ['png', 'jpg'],
-                    // );
-                    // if (results == null) {
-                    //   ScaffoldMessenger.of(context).showSnackBar(
-                    //     const SnackBar(
-                    //       content: Text("No hay archivos seleccionados."),
-                    //     ),
-                    //   );
-                    //   return;
-                    // }
-                    // final path = results.files.single.path!;
-                    // final fileName = results.files.single.name;
-                    // print(path);
-                    // print(fileName);
-
-                    // uploadImage();
-                    // storage //?Carga de imagen a firebase
-                    //        .uploadFile(path, fileName)
-                    //        .then((value) => print('Imagen cargada.'));
                   },
-                  icon: const Icon(Icons
-                      .photo)), //SvgPicture.asset('assets/svg/gallery.svg')
-
+                  icon: const Icon(Icons.photo)),
               IconButton(
                   splashRadius: 20,
                   onPressed: () async {
@@ -175,18 +147,6 @@ class _formPublicacionState extends State<formPublicacion> {
                     _openCamera(context);
                   },
                   icon: const Icon(Icons.camera_alt)),
-              // IconButton(
-              //     splashRadius: 20,
-              //     onPressed: () {
-              //       Fluttertoast.showToast(msg: "Abriendo GIFS");
-              //     },
-              //     icon: const Icon(Icons.gif)),
-              // IconButton(
-              //     splashRadius: 20,
-              //     onPressed: () {
-              //       Fluttertoast.showToast(msg: "Abriendo maps");
-              //     },
-              //     icon: const Icon(Icons.location_on)),
             ],
           ),
           //? agregar vizualizador
@@ -236,6 +196,8 @@ class _formPublicacionState extends State<formPublicacion> {
         _image = File(pickedFile!.path);
       });
       //Navigator.of(context).pop();
-    } catch (e) {}
+    } catch (e) {
+      print(e);
+    }
   }
 }
