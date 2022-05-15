@@ -246,8 +246,8 @@ class _registro_screenState extends State<registro_screen> {
     );
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black54,
-        elevation: 0,
+        backgroundColor: const Color.fromARGB(255, 33, 76, 93),
+        //elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
@@ -259,7 +259,7 @@ class _registro_screenState extends State<registro_screen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            width: responsive.width,
+            width: double.infinity,
             height: responsive.height * 0.90,
             color: Colors.white70,
             child: Stack(

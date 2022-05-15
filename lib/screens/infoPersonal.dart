@@ -143,7 +143,7 @@ class _infopersonalState extends State<InfoPersonal> {
                     ),
                     SizedBox(
                       width: resposive.wp(90),
-                      height: resposive.hp(20),
+                      height: resposive.hp(10),
                       child: editarinfpersonal,
                     ),
                   ],
